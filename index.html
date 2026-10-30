@@ -485,6 +485,12 @@ var CFG={
     window.scrollTo({top:topo(),behavior:"smooth"});
     setTimeout(confere,700);setTimeout(function(){confere();if(device!=="mobile")alvo.focus({preventScroll:true})},1300); /* no celular não abre o teclado sozinho */
   }
+  /* tudo que tem cara de botão também leva ao formulário: selos de data, painel da oferta, capas e faixa */
+  [[".hero .chip","selo_data"],[".stage .offer","painel_oferta"],[".carousel","capas"],[".ticker","faixa"]].forEach(function(par){
+    document.querySelectorAll(par[0]).forEach(function(el){el.style.cursor="pointer";el.setAttribute("role","link");el.setAttribute("tabindex","0");el.setAttribute("aria-label","Ir para o formulário da Lista VIP");
+      function vai(){lastCta=par[1];track("cta_click",{local:par[1]});irProForm()}
+      el.addEventListener("click",vai);el.addEventListener("keydown",function(e){if(e.key==="Enter")vai()});});
+  });
   /* cliques nos botões */
   document.querySelectorAll("a[data-track]").forEach(function(a){
     a.addEventListener("click",function(e){lastCta=a.getAttribute("data-track");track("cta_click",{local:lastCta});
