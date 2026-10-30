@@ -490,7 +490,9 @@ var CFG={
   form.addEventListener("focusin",function(){if(!formStarted){formStarted=true;track("form_start",{})}});
   /* máscara do WhatsApp */
   var w=document.getElementById("f-whats");
-  w.addEventListener("input",function(){var d=w.value.replace(/\D/g,"").slice(0,11),o=d;
+  /* só DDD + número: tira o +55 e o 0 que o autopreenchimento do celular coloca na frente */
+  function soNumero(v){var d=v.replace(/\D/g,"");if(d.length>11&&d.indexOf("55")===0)d=d.slice(2);d=d.replace(/^0+/,"");return d.slice(0,11)}
+  w.addEventListener("input",function(){var d=soNumero(w.value),o=d;
     if(d.length>2)o="("+d.slice(0,2)+") "+d.slice(2);if(d.length>7)o="("+d.slice(0,2)+") "+d.slice(2,7)+"-"+d.slice(7);w.value=o;});
 
   /* envio */
@@ -498,10 +500,10 @@ var CFG={
     e.preventDefault();
     var err=document.getElementById("f-err"),nome=document.getElementById("f-nome"),mail=document.getElementById("f-email");
     [nome,w,mail].forEach(function(i){i.classList.remove("bad")});
-    var digits=w.value.replace(/\D/g,""),msg="";
+    var digits=soNumero(w.value),msg="";
     if(form.empresa.value)return;
     if(nome.value.trim().length<2){msg="Digite o seu nome.";nome.classList.add("bad")}
-    else if(digits.length<10){msg="Confira o WhatsApp com DDD.";w.classList.add("bad")}
+    else if(digits.length<10||(digits.length===11&&digits[2]!=="9")){msg="Confira o WhatsApp com DDD.";w.classList.add("bad")}
     else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())){msg="Confira o seu e-mail.";mail.classList.add("bad")}
     if(msg){err.textContent=msg;err.hidden=false;track("form_error",{erro:msg});return}
     err.hidden=true;
