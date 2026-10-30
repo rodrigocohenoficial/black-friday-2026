@@ -13,7 +13,9 @@
 <meta property="og:url" content="https://black.rodrigocohen.com.br/">
 <meta property="og:image" content="https://black.rodrigocohen.com.br/img/og-image.jpg">
 <meta name="theme-color" content="#07070a">
-<link rel="icon" href="data:,">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700;800&display=swap">
@@ -292,7 +294,6 @@ footer{border-top:1px solid var(--line);padding-block:26px;font-size:13px;color:
         </div>
         <input id="f-email" type="email" name="email" placeholder="Digite o seu melhor e-mail" autocomplete="email" inputmode="email" aria-label="Seu e-mail" required>
         <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="fbclid"><input type="hidden" name="gclid"><input type="hidden" name="landing_url"><input type="hidden" name="referrer"><input type="hidden" name="pagina" value="lista-vip">
-        <input type="text" name="empresa" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
         <p class="err" id="f-err" role="alert" hidden></p>
         <button class="cta" type="submit" id="f-btn" data-track="hero_form">Entre no grupo VIP</button>
         <p class="fine">É gratuito. Ao se inscrever, você concorda em receber os avisos da Black por WhatsApp e e-mail. <a href="/politica-de-privacidade" style="color:inherit">Política de privacidade</a>.</p>
@@ -384,8 +385,8 @@ footer{border-top:1px solid var(--line);padding-block:26px;font-size:13px;color:
     <div class="txt">
       <p class="kicker">Quem vai estar na live</p>
       <h2 class="big">Rodrigo Cohen</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+      <p>26 anos de mercado, 17 deles como trader profissional. Engenheiro, analista CNPI e embaixador da B3. Desenvolve robôs de trade desde 2012.</p>
+      <p>Já são 61 mil alunos. Todo dia ele opera ao vivo na sala e posta o resultado do dia, com o dia bom e com o dia ruim.</p>
     </div>
   </div>
 </section>
@@ -474,10 +475,21 @@ var CFG={
   var grp=CFG.GROUP_URL+(utm.utm_source?"":"");
   document.getElementById("f-group").href=CFG.THANKYOU_URL;
 
+  /* leva ao formulário com os 3 campos visíveis abaixo da barra fixa */
+  function irProForm(){
+    var bar=document.querySelector(".bar"),alvo=document.getElementById("f-nome"),btn=document.getElementById("f-btn");
+    function topo(){return Math.max(0,alvo.getBoundingClientRect().top+window.pageYOffset-(bar?bar.offsetHeight:0)-24)}
+    /* as imagens carregando mudam a altura da página no caminho: confere e corrige no fim */
+    function confere(){var t=alvo.getBoundingClientRect().top,h=bar?bar.offsetHeight:0;
+      if(t<h||btn.getBoundingClientRect().bottom>window.innerHeight)window.scrollTo(0,topo())}
+    window.scrollTo({top:topo(),behavior:"smooth"});
+    setTimeout(confere,700);setTimeout(function(){confere();if(device!=="mobile")alvo.focus({preventScroll:true})},1300); /* no celular não abre o teclado sozinho */
+  }
   /* cliques nos botões */
   document.querySelectorAll("a[data-track]").forEach(function(a){
-    a.addEventListener("click",function(){lastCta=a.getAttribute("data-track");track("cta_click",{local:lastCta});
-      setTimeout(function(){var n=document.getElementById("f-nome");if(n)n.focus({preventScroll:true})},450);});
+    a.addEventListener("click",function(e){lastCta=a.getAttribute("data-track");track("cta_click",{local:lastCta});
+      if(a.getAttribute("href")!=="#lead")return;
+      e.preventDefault();irProForm();});
   });
 
   /* vídeo */
@@ -496,17 +508,20 @@ var CFG={
     if(d.length>2)o="("+d.slice(0,2)+") "+d.slice(2);if(d.length>7)o="("+d.slice(0,2)+") "+d.slice(2,7)+"-"+d.slice(7);w.value=o;});
 
   /* envio */
+  var enviado=false;
+  /* quem volta da página de obrigado encontra o botão funcionando de novo */
+  window.addEventListener("pageshow",function(e){if(e.persisted)EVENT_ID="lead_"+Date.now()+"_"+Math.random().toString(36).slice(2,9);enviado=false;var b=document.getElementById("f-btn");b.disabled=false;b.textContent="Entre no grupo VIP";document.getElementById("f-ok").hidden=true});
   form.addEventListener("submit",function(e){
     e.preventDefault();
     var err=document.getElementById("f-err"),nome=document.getElementById("f-nome"),mail=document.getElementById("f-email");
     [nome,w,mail].forEach(function(i){i.classList.remove("bad")});
     var digits=soNumero(w.value),msg="";
-    if(form.empresa.value)return;
     if(nome.value.trim().length<2){msg="Digite o seu nome.";nome.classList.add("bad")}
     else if(digits.length<10){msg="Coloque o DDD antes do número.";w.classList.add("bad")}
     else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())){msg="Confira o seu e-mail.";mail.classList.add("bad")}
     if(msg){err.textContent=msg;err.hidden=false;track("form_error",{erro:msg});return}
     err.hidden=true;
+    if(enviado)return;enviado=true;document.getElementById("f-btn").disabled=true;
     if(digits.length===10&&/[6-9]/.test(digits[2]))digits=digits.slice(0,2)+"9"+digits.slice(2); /* celular sem o 9: completa */
     var lead={nome:nome.value.trim(),whatsapp:"55"+digits,email:mail.value.trim().toLowerCase(),pagina:CFG.PAGE_ID,criado_em:new Date().toISOString(),landing_url:form.landing_url.value,referrer:form.referrer.value};
     KEYS.forEach(function(k){lead[k]=utm[k]});
