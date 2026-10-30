@@ -1,66 +1,522 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Black Friday · Rodrigo Cohen</title>
-  <meta name="description" content="A Black Friday do Rodrigo Cohen abre na live de lançamento.">
-  <!-- Página provisória: fica fora do Google até o lançamento. Apague esta linha quando a página oficial subir. -->
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --fundo: #0B0B0A;
-      --texto: #F2EDE2;
-      --dourado: #B0843B;
-      --apagado: #8C877C;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 16px;
-      background: var(--fundo);
-      color: var(--texto);
-      font-family: "Inter", system-ui, sans-serif;
-      text-align: center;
-    }
-    main { max-width: 560px; }
-    .selo {
-      display: inline-block;
-      padding: 6px 14px;
-      border: 1px solid var(--dourado);
-      border-radius: 999px;
-      color: var(--dourado);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-    h1 {
-      margin: 28px 0 16px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(40px, 9vw, 72px);
-      font-weight: 600;
-      line-height: 1.05;
-    }
-    h1 span { color: var(--dourado); }
-    p { font-size: 18px; line-height: 1.6; color: var(--apagado); }
-    .data { margin-top: 28px; color: var(--texto); font-weight: 600; }
-    footer { margin-top: 48px; font-size: 13px; color: var(--apagado); }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Black Friday Cohen · Lista VIP</title>
+<meta name="description" content="Acesso vitalício a todos os cursos do Rodrigo Cohen + o robô de scalping que ele usa na própria conta. Live dia 19/11 às 20h. Entre na Lista VIP.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Black Friday Cohen · Lista VIP">
+<meta property="og:description" content="Live dia 19/11 às 20h. Entre na Lista VIP e acesse antes de todo mundo.">
+<!-- Fora do Google até o lançamento (não afeta anúncios). Apague a linha abaixo quando quiser indexar. -->
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:url" content="https://black.rodrigocohen.com.br/">
+<meta property="og:image" content="https://black.rodrigocohen.com.br/img/og-image.jpg">
+<meta name="theme-color" content="#07070a">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: landing de Black apelativa no padrão IDB; topo em tela cheia com a foto do Cohen à direita e headline+formulário à esquerda; leque de capas com brilho logo abaixo; contador fixo no rodapé */
+:root{
+  --bg:#07070a; --panel:#121119; --field:#1a1922; --line:#2e2b3d; --text:#f4f3f7; --muted:#a8a5b6;
+  --gold:#f7c948; --gold-deep:#d99a1c; --hot:#ff3b30; --cta:#22d36b; --cta-ink:#04170b; --violet:#8b5cf6; --pend:#ff8a75;
+  --impact:"Anton","Arial Narrow",Impact,sans-serif;
+  --body:"Inter Tight",system-ui,sans-serif;
+  color-scheme:dark;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.5;padding-top:calc(52px + env(safe-area-inset-top,0px));overflow-x:hidden}
+.in{max-width:1220px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,p{margin:0}
+.pend{display:inline-block;font:700 10px var(--body);letter-spacing:.05em;color:var(--pend);border:1px dashed var(--pend);border-radius:3px;padding:1px 5px;vertical-align:3px;text-transform:uppercase}
+.preview{background:var(--pend);color:#1a0703;font:600 13px var(--body);text-align:center;padding-block:5px}
+.hl-red{color:var(--hot)} .hl-gold{color:var(--gold)}
+
+.cta{display:flex;justify-content:center;align-items:center;width:100%;background:var(--cta);color:var(--cta-ink);font:800 18px var(--body);letter-spacing:.04em;text-transform:uppercase;border:0;border-radius:8px;padding:18px 20px;cursor:pointer;text-decoration:none;box-shadow:0 0 0 1px #3cf285 inset,0 10px 40px -8px rgba(34,211,107,.65);transition:transform .15s ease,box-shadow .15s ease;box-sizing:border-box}
+.cta:hover{transform:translateY(-1px);box-shadow:0 0 0 1px #3cf285 inset,0 14px 50px -6px rgba(34,211,107,.85)}
+.cta:focus-visible,input:focus-visible,.opt input:focus-visible+span,.chk input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.cta.inline{width:auto;align-self:flex-start;padding-inline:28px}
+
+/* HERO tela cheia */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:min(880px,100svh)}
+.hero .photo{position:absolute;inset:0;z-index:-2;background:url(img/hero-clean.jpg) right center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 52%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.4) 30%,#000 52%)}
+.hero .photo::after{content:none}
+.hero .split{display:none}
+@media (max-width:1180px){
+  .hero{min-height:0}
+  .hero .photo{position:relative;width:100%;height:440px;inset:auto;background-position:64% center;-webkit-mask-image:linear-gradient(0deg,transparent 0%,#000 35%);mask-image:linear-gradient(0deg,transparent 0%,#000 35%)}
+  .hero .photo::after{background:linear-gradient(0deg,var(--bg) 0%,rgba(7,7,10,.2) 45%,transparent 70%)}
+  .hero .split{display:none}
+}
+.hero .in{padding-block:40px 56px}
+.left{display:flex;flex-direction:column;gap:22px;max-width:640px;min-width:0}
+@media (max-width:1180px){.hero .in{margin-top:-90px;position:relative}}
+.brandrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.logo{display:flex;flex-direction:column;line-height:1;margin-right:8px}
+.logo b{font:400 38px var(--impact);letter-spacing:.02em;text-transform:uppercase}
+.logo small{font:600 11px var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:rgba(40,8,8,.75);border:1px solid #4a1414;border-radius:6px;padding:10px 14px;font:700 15px var(--body);text-transform:uppercase;letter-spacing:.02em}
+.chip svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:2}
+.pre{font:700 clamp(17px,2vw,22px) var(--body);text-transform:uppercase;letter-spacing:.01em}
+h1{font:700 clamp(36px,5vw,62px)/1.08 var(--body);letter-spacing:-.01em;text-wrap:balance}
+.sub{font-size:clamp(17px,1.5vw,20px);color:#d9d7e2;max-width:58ch}
+.sub b{color:#fff}
+form{display:flex;flex-direction:column;gap:12px;max-width:620px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+input[type=text],input[type=email],input[type=tel]{width:100%;font:16px var(--body);color:var(--text);background:var(--field);border:1px solid var(--line);border-radius:8px;padding:17px 18px;box-sizing:border-box}
+input::placeholder{color:#8c899b}
+fieldset{border:0;margin:0;padding:0}
+legend{font:700 15px var(--body);margin-bottom:8px;padding:0}
+legend span{font-weight:500;color:var(--muted)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:420px){.opts{grid-template-columns:1fr}}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0}
+.opt span{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:12px 14px;font-size:15px;cursor:pointer}
+.opt span::before{content:"";width:16px;height:16px;flex:none;border:2px solid var(--gold);border-radius:50%}
+.opt input:checked+span{border-color:var(--gold);background:#1e1a10}
+.opt input:checked+span::before{background:var(--gold);box-shadow:0 0 0 3px #1e1a10 inset}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted)}
+.chk input{margin-top:3px;accent-color:var(--cta)}
+.ok{font-size:15px;color:var(--cta);font-weight:600}
+
+/* LEQUE DE CAPAS */
+.stage{position:relative;isolation:isolate;padding-block:48px 20px;display:grid;grid-template-columns:1fr;gap:20px;text-align:center;justify-items:center}
+@media (max-width:900px){.stage{grid-template-columns:1fr}}
+.stage::before{content:"";position:absolute;inset:0 -10%;background:radial-gradient(closest-side at 70% 50%,rgba(139,92,246,.35),transparent 70%);z-index:-1}
+.bigclaim{display:flex;flex-direction:column;gap:6px}
+.bigclaim .top{font:800 15px var(--body);letter-spacing:.3em;text-transform:uppercase}
+.bigclaim .big{font:400 clamp(52px,7vw,96px)/.92 var(--impact);text-transform:uppercase;background:linear-gradient(180deg,#fff3c4 0%,var(--gold) 45%,var(--gold-deep) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 24px rgba(247,201,72,.35))}
+.bigclaim .bot{font:800 15px var(--body);letter-spacing:.24em;text-transform:uppercase}
+.haul{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:17px;color:#e3e1ea;max-width:46ch}
+.haul li{display:flex;gap:10px}.haul li::before{content:"✓";color:var(--cta);font-weight:800}
+.bigclaim p{font-size:17px;color:var(--muted);max-width:40ch;margin-top:10px}
+.fan{position:relative;width:100%;max-width:620px;aspect-ratio:1/.9;justify-self:center}
+.fan img{position:absolute;width:31%;aspect-ratio:9/15;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 0 1px rgba(139,92,246,.55),0 18px 50px -10px rgba(139,92,246,.75)}
+.fan img:nth-child(1){left:2%;top:6%;transform:rotate(-7deg)}
+.fan img:nth-child(2){left:34.5%;top:0;z-index:3;transform:scale(1.06)}
+.fan img:nth-child(3){right:2%;top:6%;transform:rotate(7deg)}
+.fan img:nth-child(4){left:17%;top:48%;transform:rotate(-4deg);z-index:2}
+.fan img:nth-child(5){right:17%;top:48%;transform:rotate(4deg);z-index:2}
+@media (prefers-reduced-motion:no-preference){.fan img:nth-child(2){animation:float 5s ease-in-out infinite}}
+@keyframes float{50%{transform:scale(1.06) translateY(-6px)}}
+
+/* TICKER */
+.ticker{background:var(--gold);color:#120d02;overflow:hidden;white-space:nowrap;transform:rotate(-1.2deg);margin-block:10px;box-shadow:0 10px 30px -10px rgba(247,201,72,.5)}
+.ticker .track{display:inline-flex;gap:36px;padding-block:12px;animation:tick 32s linear infinite;font:400 20px var(--impact);letter-spacing:.06em;text-transform:uppercase}
+.ticker .track span::after{content:"✦";margin-left:36px}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker .track{animation:none}}
+
+/* SEÇÕES */
+section{padding-block:52px;display:flex;flex-direction:column;gap:24px}
+.kicker{font:800 13px var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+h2.big{font:700 clamp(32px,4.4vw,54px)/1.06 var(--body);letter-spacing:-.01em;text-wrap:balance;max-width:22ch}
+.prose{display:flex;flex-direction:column;gap:16px;max-width:62ch;font-size:19px;color:#dcdae4}
+.scene{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.scene{grid-template-columns:1fr 1fr}}
+.scene div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.scene b{font:400 32px var(--impact)}
+.scene .gain b{color:var(--cta)} .scene .loss b{color:var(--hot)}
+.scene span{font-size:15px;color:var(--muted)}
+.stat{display:flex;align-items:center;gap:18px;background:linear-gradient(90deg,rgba(255,59,48,.18),transparent);border-left:4px solid var(--hot);padding:18px 20px;border-radius:0 10px 10px 0;max-width:760px}
+.stat strong{font:400 66px/1 var(--impact)}
+.stat p{font-size:17px;color:#e7e5ee}
+.robot{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:28px;align-items:center}
+@media (max-width:860px){.robot{grid-template-columns:1fr}}
+.lock{background:radial-gradient(circle at 30% 20%,#2a2140,var(--panel));border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px;box-shadow:0 20px 60px -20px rgba(139,92,246,.55)}
+.lock .r{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:10px;font-size:15px}
+.lock .r b{color:var(--gold);text-align:right}
+.fine{font-size:13px;color:var(--muted)}
+.perks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:820px){.perks{grid-template-columns:1fr}}
+.perk{background:var(--panel);border:1px solid var(--gold);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;box-shadow:0 0 40px -18px rgba(247,201,72,.6)}
+.perk .n{font:400 44px/1 var(--impact);color:var(--gold)}
+.perk h3{font:700 20px var(--body)}
+.perk p{color:var(--muted);font-size:16px}
+.bio{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:36px;align-items:center}
+@media (max-width:820px){.bio{grid-template-columns:1fr}}
+.bio img{width:100%;max-width:420px;border-radius:14px;display:block;box-shadow:0 30px 80px -30px rgba(247,201,72,.45)}
+.bio .txt{display:flex;flex-direction:column;gap:16px;min-width:0;font-size:18px;color:#dcdae4}
+.final{position:relative;isolation:isolate;text-align:center;align-items:center}
+.final::before{content:"";position:absolute;inset:0;background:radial-gradient(closest-side,rgba(255,59,48,.16),transparent 75%);z-index:-1}
+.final h2.big{margin-inline:auto}
+.final .prose{text-align:center;align-items:center}
+.final .cta{max-width:600px}
+.clock{display:flex;flex-direction:column;gap:10px}
+.clock .t{font:800 14px var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.clock .boxes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;max-width:520px}
+.clock .boxes div{background:linear-gradient(180deg,#1d1a26,#0f0e14);border:1px solid var(--line);border-radius:10px;padding:12px 6px;text-align:center;box-shadow:0 10px 30px -14px rgba(255,59,48,.55)}
+.clock .boxes b{display:block;font:400 clamp(34px,5vw,54px)/1 var(--impact);font-variant-numeric:tabular-nums}
+.clock .boxes span{font:700 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.final .clock{align-items:center}
+.final .clock .boxes{width:100%}
+.tests{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:760px){.tests{grid-template-columns:1fr}}
+.tests div{aspect-ratio:9/14;border:2px dashed var(--line);border-radius:12px;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;color:var(--muted);font:600 14px var(--body)}
+.carousel{overflow:hidden;padding-block:10px 40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.belt{display:flex;gap:18px;width:max-content;animation:belt 45s linear infinite}
+.belt img{width:190px;aspect-ratio:9/15;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.15);box-shadow:0 0 0 1px rgba(139,92,246,.45),0 16px 40px -12px rgba(139,92,246,.7)}
+@keyframes belt{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.belt{animation:none}}
+.haul{margin-inline:auto;text-align:left}
+.m88{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;background:linear-gradient(90deg,rgba(34,211,107,.12),transparent 70%);border-left:4px solid var(--cta);border-radius:0 14px 14px 0;padding:24px 28px}
+.m88 strong{font:400 clamp(90px,13vw,170px)/.9 var(--impact);color:var(--cta);text-shadow:0 0 40px rgba(34,211,107,.45)}
+.m88 .prose{margin-top:12px}
+@media (max-width:640px){.m88{grid-template-columns:1fr;gap:6px}}
+.mgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:36px;align-items:center}
+.mtext{display:flex;flex-direction:column;gap:20px;min-width:0}
+.mvideo video{display:block;width:100%;max-width:340px;aspect-ratio:9/16;border-radius:16px;background:#000;border:1px solid var(--line);box-shadow:0 20px 60px -20px rgba(34,211,107,.45)}
+@media (max-width:1180px){.mgrid{grid-template-columns:1fr}.mvideo{justify-self:center}}
+.mtxt{font-size:19px;color:#dcdae4;margin-top:12px;max-width:52ch}
+.mtxt b{color:#fff}
+@media (max-width:640px){.m88{grid-template-columns:1fr;gap:4px;padding:20px 18px}.m88 strong{font-size:110px}.m88 h2.big{font-size:30px}.mtxt{font-size:17px}}
+.bigclaim .bot{letter-spacing:.14em}
+.haul{list-style:none;margin:22px auto 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;max-width:760px;text-align:left}
+.haul li{display:flex;flex-direction:column;gap:2px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px 12px 40px;position:relative;font-size:16px}
+.haul li::before{content:"✓";position:absolute;left:14px;top:11px;color:var(--cta);font-weight:800}
+.haul li b{color:#fff;font-weight:700}
+.haul li small{font-size:13px;color:var(--muted);line-height:1.35}
+.haul li.hot{grid-column:1/-1;border-color:var(--gold);box-shadow:0 0 30px -12px rgba(247,201,72,.6)}
+@media (max-width:640px){.haul{grid-template-columns:1fr}.bigclaim .top,.bigclaim .bot{font-size:12px;letter-spacing:.12em}.bigclaim .big{font-size:64px}}
+.offer{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:40px;align-items:center;width:100%;max-width:1100px;padding:44px;border-radius:22px;border:1px solid rgba(247,201,72,.55);background:radial-gradient(120% 90% at 0% 0%,rgba(247,201,72,.16),transparent 55%),radial-gradient(90% 90% at 100% 100%,rgba(139,92,246,.22),transparent 60%),var(--panel);box-shadow:0 0 0 1px rgba(247,201,72,.15) inset,0 30px 90px -30px rgba(247,201,72,.45);text-align:left}
+.offer .bigclaim{align-items:flex-start}
+.offer .bigclaim .big{font-size:clamp(64px,7.4vw,104px);white-space:nowrap}
+.offer .bigclaim .leva{margin-top:18px;font:800 22px var(--body);color:#fff}
+.offer .haul{grid-template-columns:1fr;margin:0;max-width:none}
+@media (max-width:860px){.offer{grid-template-columns:1fr;padding:26px 18px;gap:18px}.offer .bigclaim{align-items:center;text-align:center}}
+.deps{display:grid;grid-template-columns:repeat(2,minmax(0,380px));gap:24px;justify-content:center;align-items:center}
+.deps figure{margin:0}
+.deps img{display:block;width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 20px 60px -24px rgba(34,211,107,.45)}
+@media (max-width:640px){.deps{grid-template-columns:1fr}}
+.depsec{align-items:center;text-align:center}
+.depsec h2.big{margin-inline:auto}
+.err{font-size:14px;color:#ff8a75;font-weight:600}
+.ok a{color:#fff;text-decoration:underline}
+input.bad{border-color:#ff8a75}
+@media (max-width:640px){
+  .hero .photo{height:380px;background-position:100% 20%}
+  .hero .logo{flex-basis:100%;margin-bottom:2px}
+  .hero .in{padding-block:24px 40px}
+  .left{gap:16px}
+  .logo b{font-size:30px}
+  .chip{padding:8px 11px;font-size:13px}
+  .pre{font-size:14px}
+  h1{font-size:29px;line-height:1.12}
+  .sub{font-size:16px}
+  .belt img{width:132px}
+  .belt{gap:12px;animation-duration:35s}
+  .mvideo video{max-width:300px}
+  section{padding-block:40px}
+  h2.big{font-size:30px}
+  .bar .in{padding-block:7px}
+  .cd b{font-size:22px}
+}
+html{overflow-x:clip}
+.offer,.haul li,.m88,.lock,.deps img,.mvideo video{box-sizing:border-box}
+@media (min-width:641px) and (max-width:1180px){.hero .photo{height:clamp(420px,52vw,600px);background-position:100% 30%}.hero .left{max-width:760px}}
+@media (min-width:1181px){.hero .photo{inset:0 0 0 auto;width:62%;background-position:right center;background-size:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%),linear-gradient(0deg,transparent 0%,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 32%),linear-gradient(0deg,transparent 0%,#000 18%);mask-composite:intersect}.hero .left{max-width:600px}}
+.cd{gap:8px;white-space:nowrap}
+.cd .lbl{color:var(--gold);font-weight:800}
+.cd b{font-size:22px}
+@media (max-width:520px){.cd{gap:6px;font-size:10px}.cd b{font-size:19px}.cd .lbl{display:none}.bar .cta{font-size:12px;padding:8px 10px}}
+.bar .short{display:none}
+@media (max-width:520px){.bar .full{display:none}.bar .short{display:inline}}
+.cd span b{margin-right:2px}
+.cd .lbs{display:none;color:var(--gold);font-weight:800}
+@media (max-width:520px){.cd .lbs{display:inline}}
+@media (max-width:640px){
+  .hero .photo{height:auto;aspect-ratio:1/1;max-height:520px;background:url(img/hero-mobile.jpg) center top/cover no-repeat;-webkit-mask-image:linear-gradient(0deg,transparent 0%,#000 28%);mask-image:linear-gradient(0deg,transparent 0%,#000 28%)}
+  .hero .in{margin-top:-70px}
+  .hero .logo{display:none}
+  .brandrow{gap:8px;flex-wrap:nowrap}
+  .chip{padding:7px 10px;font-size:12px}
+  .chip svg{width:16px;height:16px}
+}
+@media (max-width:400px){.cd .lbs{display:none}.cd b{font-size:18px}.cd{gap:5px}.bar .cta{padding:8px 9px}}
+.mvideo{display:flex;flex-direction:column;align-items:center;gap:12px}
+.vhint{display:flex;align-items:center;gap:10px;font:800 15px var(--body);color:var(--cta);text-transform:uppercase;letter-spacing:.04em;text-align:center}
+.vhint .play{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--cta);color:var(--cta-ink);font-size:12px;flex:none}
+@media (prefers-reduced-motion:no-preference){.vhint .play{animation:pulse 1.6s ease-in-out infinite}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,211,107,.6)}50%{box-shadow:0 0 0 10px rgba(34,211,107,0)}}
+.vhint{background:none;border:0;cursor:pointer;font-size:18px;padding:4px 8px}
+.vwrap{position:relative;width:100%;max-width:340px}
+.vbig{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--cta);color:var(--cta-ink);display:grid;place-items:center;font-size:26px;padding-left:4px;box-sizing:border-box;pointer-events:none;box-shadow:0 0 0 10px rgba(34,211,107,.25);transition:opacity .2s}
+.vwrap.on .vbig{opacity:0}
+@media (prefers-reduced-motion:no-preference){.vbig{animation:pulse 1.6s ease-in-out infinite}}
+.acel{align-items:center;text-align:center;padding-block:64px 8px}
+.acel h2.big{margin-inline:auto;max-width:24ch;font-size:clamp(32px,5vw,60px)}
+.acel .prose{margin-inline:auto;text-align:center}
+h2.daily{max-width:18ch}
+.depsec{padding-top:20px}
+.y27{grid-column:1/-1;justify-self:center;margin:0 0 6px;font:400 clamp(30px,5vw,58px)/1 var(--impact);text-transform:uppercase;letter-spacing:.02em;color:#fff;background:linear-gradient(90deg,var(--hot),#ff7a3d);padding:12px 26px 10px;border-radius:10px;transform:rotate(-2deg);box-shadow:0 0 0 3px rgba(255,255,255,.08) inset,0 18px 50px -12px rgba(255,59,48,.75);text-align:center}
+@media (prefers-reduced-motion:no-preference){.y27{animation:y27 2.4s ease-in-out infinite}}
+@keyframes y27{50%{transform:rotate(-2deg) scale(1.04)}}
+@media (min-width:641px) and (max-width:1180px){.hero .photo{height:clamp(440px,62vw,640px);background:url(img/hero-mobile.jpg) center 15%/cover no-repeat}}
+@media (max-width:820px){.bio img{max-width:300px;margin-inline:auto}.bio .txt{text-align:left}}
+@media (max-width:640px){.deps{grid-template-columns:minmax(0,340px);justify-content:center}}
+.hero .pre{text-transform:none;font-size:clamp(15px,1.5vw,18px);font-weight:600;color:#d9d7e2;letter-spacing:0}
+.hero .chip,.hero .logo b,.hero .logo small,.hero .cta{text-transform:none;letter-spacing:.01em}
+.hero .cta{font-size:18px}
+@media (max-width:640px){.hero .pre{font-size:14px}}
+footer{border-top:1px solid var(--line);padding-block:26px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+
+.bar{position:fixed;left:0;right:0;top:0;z-index:30;background:rgba(10,9,14,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(247,201,72,.35);padding-top:env(safe-area-inset-top,0px);box-shadow:0 6px 24px -10px rgba(0,0,0,.8)}
+.bar .in{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-block:7px;flex-wrap:nowrap}
+.cd{display:flex;gap:12px;align-items:baseline;font:600 12px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.cd b{font:400 28px var(--impact);color:#fff;font-variant-numeric:tabular-nums;letter-spacing:0}
+.bar .cta{width:auto;font-size:13px;padding:9px 14px;white-space:nowrap;box-shadow:none}
+@media (max-width:520px){.cd .lbl{display:none}}
+</style>
 </head>
 <body>
-  <main>
-    <span class="selo">Em breve</span>
-    <h1>Black Friday<br><span>Rodrigo Cohen</span></h1>
-    <p>A maior condição do ano abre ao vivo, na live de lançamento.</p>
-    <p class="data">19 de novembro</p>
-    <footer>© 2026 Rodrigo Cohen</footer>
-  </main>
+<header class="hero">
+  <div class="photo" role="img" aria-label="Rodrigo Cohen de blazer preto"></div>
+  <div class="split" aria-hidden="true"></div>
+  <div class="in">
+    <div class="left">
+      <div class="brandrow">
+        <div class="logo"><b>Black Cohen</b><small>Lista VIP</small></div>
+        <span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>19 de novembro</span>
+        <span class="chip"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Às 20h</span>
+      </div>
+      <p class="pre">De trader que ganha e devolve a <span class="hl-gold">trader consistente</span>:</p>
+      <h1>Acesso vitalício a <span class="hl-red">TODOS os meus cursos</span> + o robô de scalping que eu uso na minha conta pessoal, em uma condição jamais vista e que <span class="hl-red">não se repetirá</span>.</h1>
+      <p class="sub"><b>No dia 19/11</b>, eu libero todos os meus cursos, a Sala ao Vivo, o Acelerador, a Mesa da Consistência e o robô que até hoje só operou na minha conta, <b>com 93,5% de acerto este mês</b>.</p>
+      <form id="lead" novalidate>
+        <div class="row2">
+          <input id="f-nome" type="text" name="nome" placeholder="Digite o seu nome" autocomplete="given-name" aria-label="Seu nome" required minlength="2">
+          <input id="f-whats" type="tel" name="whats" placeholder="WhatsApp com DDD" autocomplete="tel" inputmode="numeric" aria-label="Seu WhatsApp com DDD" required>
+        </div>
+        <input id="f-email" type="email" name="email" placeholder="Digite o seu melhor e-mail" autocomplete="email" inputmode="email" aria-label="Seu e-mail" required>
+        <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content"><input type="hidden" name="utm_term"><input type="hidden" name="fbclid"><input type="hidden" name="gclid"><input type="hidden" name="landing_url"><input type="hidden" name="referrer"><input type="hidden" name="pagina" value="lista-vip">
+        <input type="text" name="empresa" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+        <p class="err" id="f-err" role="alert" hidden></p>
+        <button class="cta" type="submit" id="f-btn" data-track="hero_form">Entre no grupo VIP</button>
+        <p class="fine">É gratuito. Ao se inscrever, você concorda em receber os avisos da Black por WhatsApp e e-mail. <a href="/politica-de-privacidade" style="color:inherit">Política de privacidade</a>.</p>
+        <p class="ok" id="f-ok" hidden>Inscrição confirmada! Se a próxima página não abrir sozinha, <a id="f-group" href="obrigado.html">toque aqui para continuar</a>.</p>
+      </form>
+    </div>
+  </div>
+</header>
+
+<div class="in stage">
+  <div class="offer"><p class="y27">Comece 2027 diferente!</p><div class="bigclaim">
+    <span class="top">✦ Mais de ✦</span>
+    <span class="big">R$ 10 mil</span>
+    <span class="bot">em cursos, robô e acompanhamento</span>
+    <p class="leva">Na Black você leva:</p>
+    </div>
+    <ul class="haul">
+      <li><b>Todos os cursos da Sociedade Cohen</b><small>Price Action, Sinais de Entrada, Oliver Velez, TPO Profile, Criação de Estratégias, PNL e mais</small></li>
+      <li><b>Sala ao Vivo e comunidade</b></li>
+      <li><b>Acelerador Cohen</b><small>1 semana ao vivo comigo</small></li>
+      <li><b>Mesa da Consistência</b><small>1 encontro ao vivo comigo por mês, durante 6 meses</small></li>
+      <li><b>Meu Workspace do Profit</b></li>
+      <li><b>Aula "Plano de Trade 2027"</b></li>
+      <li class="hot"><b>O robô de scalping inédito</b><small>o mesmo que opera na minha conta pessoal · depois da Black Cohen, vai custar a partir de R$12 mil · acesso por tempo determinado, não vitalício</small></li>
+    </ul>
+  </div>
+  
+</div>
+<div class="in"><div class="carousel" aria-label="Capas dos cursos"><div class="belt"><img src="img/capa1.jpg" alt=""><img src="img/capa2.jpg" alt=""><img src="img/capa3.jpg" alt=""><img src="img/capa4.jpg" alt=""><img src="img/capa5.jpg" alt=""><img src="img/capa6.jpg" alt=""><img src="img/capa7.jpg" alt=""><img src="img/capa8.jpg" alt=""><img src="img/capa9.jpg" alt=""><img src="img/capa10.jpg" alt=""><img src="img/capa1.jpg" alt=""><img src="img/capa2.jpg" alt=""><img src="img/capa3.jpg" alt=""><img src="img/capa4.jpg" alt=""><img src="img/capa5.jpg" alt=""><img src="img/capa6.jpg" alt=""><img src="img/capa7.jpg" alt=""><img src="img/capa8.jpg" alt=""><img src="img/capa9.jpg" alt=""><img src="img/capa10.jpg" alt=""></div></div></div>
+
+<div class="ticker" aria-hidden="true"><div class="track">
+  <span>Black Friday Cohen</span><span>Exclusivo Lista VIP</span><span>Condição única</span><span>Robô + cursos + sala ao vivo</span><span>Um 2027 diferente</span>
+  <span>Black Friday Cohen</span><span>Exclusivo Lista VIP</span><span>Condição única</span><span>Robô + cursos + sala ao vivo</span><span>Um 2027 diferente</span>
+</div></div>
+
+<main>
+<section class="in method">
+  <div class="mgrid">
+    <div class="mtext">
+      <h2 class="big daily">Aprenda com quem <span class="hl-gold">mostra o resultado todo dia</span>.</h2>
+      <p class="prose">Todo dia eu posto as minhas operações e o resultado do dia no Instagram e opero ao vivo na sala. Sem esconder nada.</p>
+      <div class="m88">
+        <strong>88%</strong>
+        <div>
+          <h2 class="big">de acerto <span class="hl-gold">desde o início do mês</span>, operando na mão.</h2>
+          <p class="mtxt">Meu operacional desde o início do mês: <b>88% de acerto</b>, com uma meta de <b>R$1.000 por dia</b>. Pra quem está começando, a meta é de <b>R$100 por dia usando R$2 mil na conta</b>. Isso dá R$500 por semana, ou cerca de <b>R$2 mil por mês</b>. E o robô vem entregando um resultado parecido.</p>
+          <p class="fine" style="margin-top:10px">Relatório no vídeo: 88,79% de acerto em 107 operações manuais.</p>
+        </div>
+      </div>
+      <p class="fine">Resultado passado não garante resultado futuro.</p>
+    </div>
+    <div class="mvideo"><button type="button" class="vhint" id="vplay"><span class="play">▶</span> Veja o vídeo</button><div class="vwrap"><span class="vbig" aria-hidden="true">▶</span><video id="mvid" src="vid/metodo.mp4" poster="vid/metodo-poster.jpg" controls playsinline preload="metadata"></video></div></div>
+  </div>
+</section>
+
+<section class="in">
+  <div class="robot">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 class="big">Eu nunca vendi esse robô. <span class="hl-red">Até agora.</span></h2>
+      <div class="prose">
+        <p>Durante anos, ele operou só pra mim. Faz scalping no mini-índice, e nesse tipo de estratégia a execução é melhor com pouca gente na mesma ordem. Por isso ele nunca foi pra prateleira.</p>
+        <p>Nessa Black, eu abro um número limitado de vagas. Na live do dia 19/11 eu mostro o histórico completo dele e <b>quantas pessoas vão poder ter ele na conta</b>.</p>
+      </div>
+    </div>
+    <div class="lock" aria-label="Resumo do robô">
+      <div class="r"><span>Estratégia</span><b>Scalping no mini-índice</b></div>
+      <div class="r"><span>Já esteve à venda?</span><b>Nunca</b></div>
+      <div class="r"><span>Histórico completo</span><b>Aberto na live</b></div>
+      <div class="r"><span>Vagas</span><b>Limitadas · revelo dia 19/11</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="in acel">
+  <p class="kicker">Incluído na Black: Acelerador Cohen</p>
+  <h2 class="big">Em 1 semana, eu te ensino a <span class="hl-gold">ganhar dinheiro no mercado</span>. <span class="hl-red">Comprovadamente.</span></h2>
+  <p class="prose">5 noites ao vivo comigo, aplicando o mesmo método que eu uso na minha conta.</p>
+</section>
+
+<section class="in depsec">
+  <h2 class="big">Alguns só falam. <span class="hl-gold">Eu mostro.</span></h2>
+  <div class="deps"><figure><img src="img/dep1.jpg" alt="Print do grupo: aluno usando o Scalp do Cohen com 100% de acerto em 6 contratos"></figure><figure><img src="img/dep2.jpg" alt="Print do grupo: aluno aplicando a estratégia de 70 pontos com 5 operações certas"></figure></div>
+  <a class="cta inline" href="#lead" data-track="depoimentos_cta" style="align-self:center">Quero garantir minha vaga</a>
+</section>
+
+<section class="in">
+  <div class="bio">
+    <img src="img/bio.jpg" alt="Rodrigo Cohen de camiseta preta">
+    <div class="txt">
+      <p class="kicker">Quem vai estar na live</p>
+      <h2 class="big">Rodrigo Cohen</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="in">
+  <p>Day trade envolve risco. Operações com derivativos são alavancadas e podem gerar perdas superiores ao capital investido. Resultado passado não garante resultado futuro.</p>
+  <p><span class="pend">razão social</span> · CNPJ <span class="pend">nº</span> · Política de privacidade · Termos de uso</p>
+</footer>
+
+<div class="bar"><div class="in">
+  <div class="cd"><span class="lbl">A live começa em</span><span class="lbs">Live em</span><span><b id="d">--</b>d</span><span><b id="h">--</b>h</span><span><b id="m">--</b>m</span><span><b id="s">--</b>s</span></div>
+  <a class="cta" href="#lead" data-track="barra_fixa_cta"><span class="full">Entrar na Lista VIP</span><span class="short">Quero entrar</span></a>
+</div></div>
+
+<script>
+/* ===== CONFIGURAÇÃO PARA PUBLICAR ===== */
+var CFG={
+  GROUP_URL:"https://chat.whatsapp.com/HDaNgPK23AH7Shp7ccQvBV",
+  GTM_ID:"",            /* ex.: GTM-XXXXXXX  (deixe vazio para não carregar) */
+  META_PIXEL_ID:"",     /* ex.: 123456789012345 */
+  CRM_WEBHOOK_URL:"https://script.google.com/macros/s/AKfycbxz8_7dvLdA7MbgeuaI7aEkps0VMuPOKyAtoxtYvmA3d6KLCPF38jfSUhY4L8gqeNRx/exec",   /* URL /exec do Apps Script da planilha de leads (ver apps-script-planilha.gs) */
+  THANKYOU_URL:"obrigado.html", /* página de obrigado com o botão do grupo */
+  PAGE_ID:"lista-vip-bf-cohen"
+};
+/* ===================================== */
+(function(){
+  window.dataLayer=window.dataLayer||[];
+  function track(ev,data){
+    var p=Object.assign({event:ev,page_id:CFG.PAGE_ID},data||{});
+    window.dataLayer.push(p);
+    if(window.fbq){
+      if(ev==="lead_submit") fbq("track","Lead",{content_name:CFG.PAGE_ID},{eventID:p.event_id});
+      else if(ev==="cta_click") fbq("trackCustom","CTAClick",{local:p.local});
+      else if(ev==="video_progress") fbq("trackCustom","VideoProgress",{pct:p.pct});
+      else if(ev==="scroll_depth") fbq("trackCustom","ScrollDepth",{pct:p.pct});
+      else if(ev==="form_start") fbq("trackCustom","FormStart");
+    }
+  }
+  /* GTM */
+  if(CFG.GTM_ID){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',CFG.GTM_ID);}
+  /* Meta Pixel */
+  if(CFG.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.META_PIXEL_ID);fbq('track','PageView');}
+
+  /* contador */
+  var end=new Date("2026-11-19T20:00:00-03:00").getTime();
+  function pad(n){return String(n).padStart(2,"0")}
+  function tick(){var t=Math.max(0,end-Date.now()),s=Math.floor(t/1000);
+    var v={d:pad(Math.floor(s/86400)),h:pad(Math.floor(s%86400/3600)),m:pad(Math.floor(s%3600/60)),s:pad(s%60)};
+    ["d","h","m","s"].forEach(function(k){var el=document.getElementById(k);if(el)el.textContent=v[k]});
+    document.querySelectorAll("[data-u]").forEach(function(el){el.textContent=v[el.getAttribute("data-u")]});}
+  tick();setInterval(tick,1000);
+
+  /* identificação para o Meta (melhora a qualidade da correspondência) */
+  function ck(n){var m=document.cookie.match("(^|;)\\s*"+n+"=([^;]*)");return m?decodeURIComponent(m[2]):""}
+  var EVENT_ID="lead_"+Date.now()+"_"+Math.random().toString(36).slice(2,9);
+  var T0=Date.now(),scrollMax=0,videoMax=0,lastCta="",formStarted=false;
+  var device=/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?"mobile":"desktop";
+
+  /* profundidade de rolagem */
+  var marks=[25,50,75,90],hit={};
+  window.addEventListener("scroll",function(){
+    var h=document.documentElement,sc=(h.scrollTop+innerHeight)/h.scrollHeight*100;
+    if(sc>scrollMax)scrollMax=Math.round(sc);
+    marks.forEach(function(m){if(sc>=m&&!hit[m]){hit[m]=1;track("scroll_depth",{pct:m})}});
+  },{passive:true});
+  /* seções vistas */
+  if("IntersectionObserver" in window){
+    var secs={".stage":"oferta",".method":"metodo","section .robot":"robo",".acel":"acelerador",".depsec":"depoimentos",".bio":"bio"},seen={};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){var n=e.target.getAttribute("data-sec");if(e.isIntersecting&&!seen[n]){seen[n]=1;track("section_view",{secao:n})}})},{threshold:.4});
+    Object.keys(secs).forEach(function(sel){var el=document.querySelector(sel);if(el){el.setAttribute("data-sec",secs[sel]);io.observe(el)}});
+  }
+  /* tempo na página */
+  [15,30,60,120].forEach(function(s){setTimeout(function(){track("time_on_page",{segundos:s})},s*1000)});
+
+  /* UTMs: primeiro toque fica salvo, e a URL atual tem prioridade */
+  var KEYS=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","fbclid","gclid"];
+  var q=new URLSearchParams(location.search),saved={};
+  try{saved=JSON.parse(localStorage.getItem("bfc_utm")||"{}")}catch(e){}
+  var utm={};KEYS.forEach(function(k){utm[k]=q.get(k)||saved[k]||""});
+  try{if(KEYS.some(function(k){return q.get(k)}))localStorage.setItem("bfc_utm",JSON.stringify(utm))}catch(e){}
+  var form=document.getElementById("lead");
+  KEYS.forEach(function(k){var el=form.querySelector('input[name="'+k+'"]');if(el)el.value=utm[k]});
+  form.querySelector('[name="landing_url"]').value=location.href.split("#")[0];
+  form.querySelector('[name="referrer"]').value=document.referrer||"";
+  var grp=CFG.GROUP_URL+(utm.utm_source?"":"");
+  document.getElementById("f-group").href=CFG.THANKYOU_URL;
+
+  /* cliques nos botões */
+  document.querySelectorAll("a[data-track]").forEach(function(a){
+    a.addEventListener("click",function(){lastCta=a.getAttribute("data-track");track("cta_click",{local:lastCta});
+      setTimeout(function(){var n=document.getElementById("f-nome");if(n)n.focus({preventScroll:true})},450);});
+  });
+
+  /* vídeo */
+  var mv=document.getElementById("mvid"),vw=mv&&mv.parentNode;
+  if(mv){mv.addEventListener("play",function(){vw.classList.add("on");track("video_play",{local:"metodo"})});
+    mv.addEventListener("pause",function(){vw.classList.remove("on")});
+    var vq={};mv.addEventListener("timeupdate",function(){if(!mv.duration)return;var pc=mv.currentTime/mv.duration*100;if(pc>videoMax)videoMax=Math.round(pc);[25,50,75,95].forEach(function(m){if(pc>=m&&!vq[m]){vq[m]=1;track("video_progress",{pct:m})}})});
+    document.getElementById("vplay").addEventListener("click",function(){mv.scrollIntoView({behavior:"smooth",block:"center"});try{mv.play()}catch(e){}});}
+  /* início do preenchimento */
+  form.addEventListener("focusin",function(){if(!formStarted){formStarted=true;track("form_start",{})}});
+  /* máscara do WhatsApp */
+  var w=document.getElementById("f-whats");
+  w.addEventListener("input",function(){var d=w.value.replace(/\D/g,"").slice(0,11),o=d;
+    if(d.length>2)o="("+d.slice(0,2)+") "+d.slice(2);if(d.length>7)o="("+d.slice(0,2)+") "+d.slice(2,7)+"-"+d.slice(7);w.value=o;});
+
+  /* envio */
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var err=document.getElementById("f-err"),nome=document.getElementById("f-nome"),mail=document.getElementById("f-email");
+    [nome,w,mail].forEach(function(i){i.classList.remove("bad")});
+    var digits=w.value.replace(/\D/g,""),msg="";
+    if(form.empresa.value)return;
+    if(nome.value.trim().length<2){msg="Digite o seu nome.";nome.classList.add("bad")}
+    else if(digits.length<10){msg="Confira o WhatsApp com DDD.";w.classList.add("bad")}
+    else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())){msg="Confira o seu e-mail.";mail.classList.add("bad")}
+    if(msg){err.textContent=msg;err.hidden=false;track("form_error",{erro:msg});return}
+    err.hidden=true;
+    var lead={nome:nome.value.trim(),whatsapp:"55"+digits,email:mail.value.trim().toLowerCase(),pagina:CFG.PAGE_ID,criado_em:new Date().toISOString(),landing_url:form.landing_url.value,referrer:form.referrer.value};
+    KEYS.forEach(function(k){lead[k]=utm[k]});
+    var fbc=ck("_fbc")||(utm.fbclid?"fb.1."+Date.now()+"."+utm.fbclid:"");
+    Object.assign(lead,{tipo:"lead",event_id:EVENT_ID,fbp:ck("_fbp"),fbc:fbc,dispositivo:device,user_agent:navigator.userAgent,tela:screen.width+"x"+screen.height,tempo_na_pagina_s:Math.round((Date.now()-T0)/1000),scroll_max_pct:scrollMax,video_assistido_pct:videoMax,cta_origem:lastCta||"topo"});
+    try{sessionStorage.setItem("bfc_lead",JSON.stringify({event_id:EVENT_ID,email:lead.email,whatsapp:lead.whatsapp,utm_source:utm.utm_source,utm_campaign:utm.utm_campaign}))}catch(x){}
+    track("lead_submit",{event_id:EVENT_ID,utm_source:utm.utm_source,utm_campaign:utm.utm_campaign,utm_content:utm.utm_content,dispositivo:device});
+    if(CFG.CRM_WEBHOOK_URL){try{fetch(CFG.CRM_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(lead),keepalive:true,mode:"no-cors"})}catch(x){}}
+    document.getElementById("f-btn").textContent="Enviando...";
+    document.getElementById("f-ok").hidden=false;
+    setTimeout(function(){try{window.location.href=CFG.THANKYOU_URL}catch(x){}},900);
+  });
+})();
+</script>
 </body>
 </html>
