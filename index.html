@@ -503,10 +503,11 @@ var CFG={
     var digits=soNumero(w.value),msg="";
     if(form.empresa.value)return;
     if(nome.value.trim().length<2){msg="Digite o seu nome.";nome.classList.add("bad")}
-    else if(digits.length<10||(digits.length===11&&digits[2]!=="9")){msg="Confira o WhatsApp com DDD.";w.classList.add("bad")}
+    else if(digits.length<10){msg="Coloque o DDD antes do número.";w.classList.add("bad")}
     else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())){msg="Confira o seu e-mail.";mail.classList.add("bad")}
     if(msg){err.textContent=msg;err.hidden=false;track("form_error",{erro:msg});return}
     err.hidden=true;
+    if(digits.length===10&&/[6-9]/.test(digits[2]))digits=digits.slice(0,2)+"9"+digits.slice(2); /* celular sem o 9: completa */
     var lead={nome:nome.value.trim(),whatsapp:"55"+digits,email:mail.value.trim().toLowerCase(),pagina:CFG.PAGE_ID,criado_em:new Date().toISOString(),landing_url:form.landing_url.value,referrer:form.referrer.value};
     KEYS.forEach(function(k){lead[k]=utm[k]});
     var fbc=ck("_fbc")||(utm.fbclid?"fb.1."+Date.now()+"."+utm.fbclid:"");
