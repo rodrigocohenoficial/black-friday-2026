@@ -221,6 +221,7 @@ input.bad{border-color:#ff8a75}
 }
 html{overflow-x:clip}
 .offer,.haul li,.m88,.lock,.deps img,.mvideo video{box-sizing:border-box}
+.deps img,.bio img{height:auto}
 @media (min-width:641px) and (max-width:1180px){.hero .photo{height:clamp(420px,52vw,600px);background-position:100% 30%}.hero .left{max-width:760px}}
 @media (min-width:1181px){.hero .photo{inset:0 0 0 auto;width:62%;background-position:right center;background-size:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 32%),linear-gradient(0deg,transparent 0%,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 32%),linear-gradient(0deg,transparent 0%,#000 18%);mask-composite:intersect}.hero .left{max-width:600px}}
 .cd{gap:8px;white-space:nowrap}
@@ -382,13 +383,13 @@ footer{border-top:1px solid var(--line);padding-block:26px;font-size:13px;color:
 
 <section class="in depsec">
   <h2 class="big">Alguns só falam. <span class="hl-gold">Eu mostro.</span></h2>
-  <div class="deps"><figure><img src="img/dep1.jpg" alt="Print do grupo: aluno usando o Scalp do Cohen com 100% de acerto em 6 contratos"></figure><figure><img src="img/dep2.jpg" alt="Print do grupo: aluno aplicando a estratégia de 70 pontos com 5 operações certas"></figure></div>
+  <div class="deps"><figure><img src="img/dep1.jpg" width="736" height="1104" loading="lazy" decoding="async" alt="Print do grupo: aluno usando o Scalp do Cohen com 100% de acerto em 6 contratos"></figure><figure><img src="img/dep2.jpg" width="800" height="972" loading="lazy" decoding="async" alt="Print do grupo: aluno aplicando a estratégia de 70 pontos com 5 operações certas"></figure></div>
   <a class="cta inline" href="#lead" data-track="depoimentos_cta" style="align-self:center">Quero garantir minha vaga</a>
 </section>
 
 <section class="in">
   <div class="bio">
-    <img src="img/bio.jpg" alt="Rodrigo Cohen de camiseta preta">
+    <img src="img/bio.jpg" width="900" height="1350" loading="lazy" decoding="async" alt="Rodrigo Cohen de camiseta preta">
     <div class="txt">
       <p class="kicker">Quem vai estar na live</p>
       <h2 class="big">Rodrigo Cohen</h2>
@@ -492,7 +493,7 @@ var CFG={
     function confere(){var t=alvo.getBoundingClientRect().top,h=bar?bar.offsetHeight:0;
       if(t<h||btn.getBoundingClientRect().bottom>window.innerHeight)window.scrollTo(0,topo())}
     window.scrollTo({top:topo(),behavior:"smooth"});
-    setTimeout(confere,700);setTimeout(function(){confere();if(device!=="mobile")alvo.focus({preventScroll:true})},1300); /* no celular não abre o teclado sozinho */
+    setTimeout(confere,700);setTimeout(function(){confere();if(device!=="mobile")alvo.focus({preventScroll:true})},1300);setTimeout(confere,2200); /* no celular não abre o teclado sozinho */
   }
   /* tudo que tem cara de botão também leva ao formulário: selos de data, painel da oferta, capas e faixa */
   [[".hero .chip","selo_data"],[".stage .offer","painel_oferta"],[".carousel","capas"],[".ticker","faixa"]].forEach(function(par){
@@ -522,6 +523,12 @@ var CFG={
   w.addEventListener("input",function(){var d=soNumero(w.value),o=d;
     if(d.length>2)o="("+d.slice(0,2)+") "+d.slice(2);if(d.length>7)o="("+d.slice(0,2)+") "+d.slice(2,7)+"-"+d.slice(7);w.value=o;});
 
+  /* e-mail: tira espaços e corrige os erros de digitação mais comuns do domínio */
+  var DOM={"gmail.con":"gmail.com","gmail.co":"gmail.com","gmail.cm":"gmail.com","gmail.om":"gmail.com","gmail.comm":"gmail.com","gmail.com.br":"gmail.com","gmal.com":"gmail.com","gmial.com":"gmail.com","gmai.com":"gmail.com","gamil.com":"gmail.com","gnail.com":"gmail.com","gmaill.com":"gmail.com",
+    "hotmail.con":"hotmail.com","hotmail.co":"hotmail.com","hotmail.cm":"hotmail.com","hotmal.com":"hotmail.com","hotmial.com":"hotmail.com","hotmai.com":"hotmail.com","homail.com":"hotmail.com",
+    "outlook.con":"outlook.com","outlok.com":"outlook.com","outloo.com":"outlook.com","yahoo.con":"yahoo.com","yaho.com":"yahoo.com","yahoo.com.b":"yahoo.com.br","icloud.con":"icloud.com","iclod.com":"icloud.com",
+    "uol.con":"uol.com.br","uol.com":"uol.com.br","bol.con":"bol.com.br","bol.com":"bol.com.br"};
+  function corrigeEmail(v){v=v.trim().toLowerCase().replace(/\s+/g,"").replace(/,/g,".");var p=v.split("@");return p.length===2?p[0]+"@"+(DOM[p[1]]||p[1]):v}
   /* envio */
   var enviado=false;
   /* quem volta da página de obrigado encontra o botão funcionando de novo */
@@ -533,21 +540,29 @@ var CFG={
     var digits=soNumero(w.value),msg="";
     if(nome.value.trim().length<2){msg="Digite o seu nome.";nome.classList.add("bad")}
     else if(digits.length<10){msg="Coloque o DDD antes do número.";w.classList.add("bad")}
-    else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())){msg="Confira o seu e-mail.";mail.classList.add("bad")}
+    else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(corrigeEmail(mail.value))){msg="Confira o seu e-mail.";mail.classList.add("bad")}
     if(msg){err.textContent=msg;err.hidden=false;track("form_error",{erro:msg});return}
     err.hidden=true;
     if(enviado)return;enviado=true;document.getElementById("f-btn").disabled=true;
     if(digits.length===10&&/[6-9]/.test(digits[2]))digits=digits.slice(0,2)+"9"+digits.slice(2); /* celular sem o 9: completa */
-    var lead={nome:nome.value.trim(),whatsapp:"55"+digits,email:mail.value.trim().toLowerCase(),pagina:CFG.PAGE_ID,criado_em:new Date().toISOString(),landing_url:form.landing_url.value,referrer:form.referrer.value};
+    var lead={nome:nome.value.trim(),whatsapp:"55"+digits,email:corrigeEmail(mail.value),pagina:CFG.PAGE_ID,criado_em:new Date().toISOString(),landing_url:form.landing_url.value,referrer:form.referrer.value};
     KEYS.forEach(function(k){lead[k]=utm[k]});
     var fbc=ck("_fbc")||(utm.fbclid?"fb.1."+Date.now()+"."+utm.fbclid:"");
     Object.assign(lead,{tipo:"lead",event_id:EVENT_ID,fbp:ck("_fbp"),fbc:fbc,dispositivo:device,user_agent:navigator.userAgent,tela:screen.width+"x"+screen.height,tempo_na_pagina_s:Math.round((Date.now()-T0)/1000),scroll_max_pct:scrollMax,video_assistido_pct:videoMax,cta_origem:lastCta||"topo"});
     try{sessionStorage.setItem("bfc_lead",JSON.stringify({event_id:EVENT_ID,email:lead.email,whatsapp:lead.whatsapp,utm_source:utm.utm_source,utm_campaign:utm.utm_campaign}))}catch(x){}
     track("lead_submit",{event_id:EVENT_ID,utm_source:utm.utm_source,utm_campaign:utm.utm_campaign,utm_content:utm.utm_content,dispositivo:device});
-    if(CFG.CRM_WEBHOOK_URL){try{fetch(CFG.CRM_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(lead),keepalive:true,mode:"no-cors"})}catch(x){}}
+    /* só segue depois que a planilha confirma; se falhar, manda de novo e a página de obrigado tenta outra vez */
+    var corpo=JSON.stringify(lead),foi=false;
+    try{localStorage.setItem("bfc_pend",corpo)}catch(x){}
     document.getElementById("f-btn").textContent="Enviando...";
-    document.getElementById("f-ok").hidden=false;
-    setTimeout(function(){try{window.location.href=CFG.THANKYOU_URL}catch(x){}},900);
+    function segue(){if(foi)return;foi=true;document.getElementById("f-ok").hidden=false;try{window.location.href=CFG.THANKYOU_URL}catch(x){}}
+    function reserva(){try{fetch(CFG.CRM_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:corpo,keepalive:true,mode:"no-cors"})}catch(x){}}
+    if(!CFG.CRM_WEBHOOK_URL){segue();return}
+    var limite=setTimeout(function(){reserva();segue()},7000);
+    fetch(CFG.CRM_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:corpo})
+      .then(function(r){return r.json()})
+      .then(function(j){if(!j||!j.ok)throw 0;try{localStorage.removeItem("bfc_pend")}catch(x){}clearTimeout(limite);segue()})
+      .catch(function(){clearTimeout(limite);reserva();segue()});
   });
 })();
 </script>
