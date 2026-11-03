@@ -50,13 +50,18 @@ h1 span{color:var(--hot)}
 </main>
 <script>
 /* use os mesmos IDs do index.html */
-var CFG={GTM_ID:"",META_PIXEL_ID:"",PAGE_ID:"obrigado-bf-cohen",
+var CFG={GTM_ID:"",META_PIXEL_ID:"2870327729868266",PAGE_ID:"obrigado-bf-cohen",
   CRM_WEBHOOK_URL:"https://script.google.com/macros/s/AKfycbxz8_7dvLdA7MbgeuaI7aEkps0VMuPOKyAtoxtYvmA3d6KLCPF38jfSUhY4L8gqeNRx/exec"};
 (function(){
   window.dataLayer=window.dataLayer||[];
-  if(CFG.GTM_ID){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',CFG.GTM_ID);}
-  if(CFG.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.META_PIXEL_ID);fbq('track','PageView');}
   var L={};try{L=JSON.parse(sessionStorage.getItem("bfc_lead")||"{}")}catch(e){}
+  /* correspondência avançada: o pixel faz o hash do e-mail e do telefone antes de enviar */
+  function am(){var o={};if(L.email)o.em=String(L.email).trim().toLowerCase();if(L.whatsapp)o.ph=String(L.whatsapp).replace(/\D/g,"");return o}
+  if(CFG.GTM_ID){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',CFG.GTM_ID);}
+  if(CFG.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CFG.META_PIXEL_ID,am());fbq('track','PageView');
+    /* conversão: Lead uma vez por cadastro, com o mesmo event_id da API de Conversões (o Meta não conta duas vezes) */
+    if(L.event_id){var k="bfc_px_"+L.event_id,ja=false;try{ja=!!localStorage.getItem(k)}catch(e){}
+      if(!ja){fbq('track','Lead',{content_name:'lista-vip-bf-cohen'},{eventID:L.event_id});try{localStorage.setItem(k,"1")}catch(e){}}}}
   function evt(nome){
     if(!CFG.CRM_WEBHOOK_URL||!L.event_id)return;
     try{fetch(CFG.CRM_WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({tipo:"evento",evento:nome,event_id:L.event_id,email:L.email||"",whatsapp:L.whatsapp||"",utm_source:L.utm_source||"",utm_campaign:L.utm_campaign||"",criado_em:new Date().toISOString()}),keepalive:true,mode:"no-cors"})}catch(e){}
