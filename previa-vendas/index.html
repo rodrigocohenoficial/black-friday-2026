@@ -842,7 +842,10 @@ body{margin:0}
 @media (max-width:480px){.hero .btn,.hero .cta{text-align:center;justify-content:center}}
 .rtxt h3{line-height:1.16}
 @media (min-width:1024px) and (max-width:1240px){.hero .left{max-width:490px}.hero h1{font-size:42px}.hero .sub{font-size:17px;max-width:none}}
-.pcard .x12{font:800 18px var(--body);letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:-6px}
+.pcard .parc{display:flex;align-items:baseline;justify-content:center;gap:10px;flex-wrap:nowrap}
+.pcard .x12{font:400 clamp(30px,3.6vw,42px)/1 var(--impact);color:#fff}
+.pcard .parc .p{white-space:nowrap}
+@media (max-width:380px){.pcard .parc .p{font-size:50px}.pcard .x12{font-size:28px}}
 </style>
 </head>
 <body>
@@ -1027,8 +1030,7 @@ body{margin:0}
       <div class="pcard">
         <span class="t">Preço da Black Cohen</span>
         <span class="de">de <s>R$ 10.385</s> por</span>
-        <span class="x12">12x de</span>
-        <span class="p">R$ 124,75</span>
+        <span class="parc"><span class="x12">12x</span><span class="p">R$ 124,75</span></span>
         <span class="v">ou <b>R$ 1.497 à vista</b></span>
         <a class="cta" href="#" data-track="oferta_cta" data-checkout>Quero entrar na Black</a>
         <p class="payok">Compra segura · Garantia de 7 dias</p>
