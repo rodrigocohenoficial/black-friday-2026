@@ -13,6 +13,8 @@
 <meta property="og:url" content="https://black.rodrigocohen.com.br/">
 <meta property="og:image" content="https://black.rodrigocohen.com.br/img/og-image.jpg">
 <meta name="theme-color" content="#07070a">
+<!-- Meta Pixel no topo: o PageView precisa disparar logo, senão o Meta não conta a visita ("carregamento da página") -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2870327729868266');fbq('track','PageView');</script>
 <link rel="icon" href="/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
@@ -417,7 +419,7 @@ footer{border-top:1px solid var(--line);padding-block:26px;font-size:13px;color:
 var CFG={
   GROUP_URL:"https://chat.whatsapp.com/JdssnY5E5Zd3vBOncu3B8y",
   GTM_ID:"",            /* ex.: GTM-XXXXXXX  (deixe vazio para não carregar) */
-  META_PIXEL_ID:"",     /* ex.: 123456789012345 */
+  META_PIXEL_ID:"",     /* deixe vazio: o pixel 2870327729868266 já carrega no <head> */
   CRM_WEBHOOK_URL:"https://script.google.com/macros/s/AKfycbxz8_7dvLdA7MbgeuaI7aEkps0VMuPOKyAtoxtYvmA3d6KLCPF38jfSUhY4L8gqeNRx/exec",   /* URL /exec do Apps Script da planilha de leads (ver apps-script-planilha.gs) */
   THANKYOU_URL:"obrigado.html", /* página de obrigado com o botão do grupo */
   PAGE_ID:"lista-vip-bf-cohen"
@@ -429,7 +431,7 @@ var CFG={
     var p=Object.assign({event:ev,page_id:CFG.PAGE_ID},data||{});
     window.dataLayer.push(p);
     if(window.fbq){
-      if(ev==="lead_submit") fbq("track","Lead",{content_name:CFG.PAGE_ID},{eventID:p.event_id});
+      if(ev==="lead_submit"){/* o Lead do pixel dispara na página de obrigado, com o mesmo event_id */}
       else if(ev==="cta_click") fbq("trackCustom","CTAClick",{local:p.local});
       else if(ev==="video_progress") fbq("trackCustom","VideoProgress",{pct:p.pct});
       else if(ev==="scroll_depth") fbq("trackCustom","ScrollDepth",{pct:p.pct});
