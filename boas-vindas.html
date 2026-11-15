@@ -11,87 +11,233 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600;700;800&display=swap">
 <style>
-:root{--bg:#07070a;--card:#111117;--line:rgba(255,255,255,.1);--text:#f4f3f7;--muted:#c9c6d4;--gold:#f7c948;--hot:#ff3b30;--cta:#22d36b;--cta-ink:#04170b;
+:root{--bg:#07070a;--card:#121218;--card2:#17171f;--line:rgba(255,255,255,.09);--text:#f4f3f7;--muted:#b9b6c6;--gold:#f7c948;--hot:#ff3b30;--ok:#22d36b;--ok-ink:#04170b;
   --impact:"Anton","Arial Narrow",Impact,sans-serif;--body:"Inter Tight",system-ui,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;line-height:1.5}
-.bg{position:fixed;inset:-30px;background:url(img/hero-clean.jpg) 70% center/cover no-repeat;filter:blur(18px) brightness(.28);z-index:-1}
-main{max-width:760px;margin:0 auto;padding:44px 16px 64px;display:flex;flex-direction:column;gap:22px}
-.brand{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
-.brand b{font:400 clamp(40px,8vw,64px)/1 var(--impact);letter-spacing:.02em}
-.brand .line{display:flex;align-items:center;gap:12px;width:100%;max-width:420px}
-.brand .line i{flex:1;height:2px;background:var(--hot)}
-.brand small{font:600 13px var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
-h1{margin:6px 0 0;text-align:center;font:800 clamp(30px,5.6vw,52px)/1.08 var(--body);text-wrap:balance}
-h1 span{color:var(--gold)}
-.lead{margin:0 auto;text-align:center;color:var(--muted);font-size:clamp(16px,2.2vw,19px);max-width:46ch}
-.step{background:rgba(17,17,23,.92);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;display:grid;grid-template-columns:44px 1fr;gap:4px 16px}
-.n{grid-row:span 3;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#111;font:800 22px var(--body);display:grid;place-items:center}
-.step h2{margin:0;font:800 clamp(19px,2.6vw,23px)/1.25 var(--body)}
-.step p{margin:4px 0 0;color:var(--muted);font-size:16px}
-.step .act{margin-top:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--cta);color:var(--cta-ink);font:800 17px var(--body);text-decoration:none;border-radius:8px;padding:14px 22px;max-width:100%}
-.btn.alt{background:var(--gold);color:#111}
-.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
-.risk{margin-top:12px;border:1px solid rgba(255,59,48,.5);background:rgba(255,59,48,.08);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--text)}
-.risk b{color:#ff8a82}
-.risk label{display:flex;gap:10px;align-items:flex-start;margin-top:10px;font-weight:700;cursor:pointer}
-.risk input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--cta)}
-.hide{display:none}
-.info{font-size:14px;color:var(--muted);text-align:center;margin:6px 0 0}
-@media (max-width:480px){.step{grid-template-columns:1fr}.n{grid-row:auto}}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.bg{position:fixed;inset:-30px;background:url(img/hero-clean.jpg) 70% center/cover no-repeat;filter:blur(22px) brightness(.22);z-index:-1}
+main{max-width:680px;margin:0 auto;padding:28px 16px 120px;display:flex;flex-direction:column;gap:18px}
+.hello{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,rgba(247,201,72,.14),rgba(18,18,24,.9) 55%);border:1px solid rgba(247,201,72,.28);border-radius:20px;padding:18px}
+.hello img{width:72px;height:72px;border-radius:50%;border:3px solid var(--gold);flex:none;object-fit:cover}
+.hello small{display:block;font:700 12px var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hello h1{margin:2px 0 4px;font:800 clamp(24px,5.6vw,32px)/1.12 var(--body)}
+.hello p{margin:0;color:var(--muted);font-size:15px}
+.progress{position:sticky;top:0;z-index:5;margin:0 -16px;padding:12px 16px;background:rgba(7,7,10,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.progress .row{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:14px}
+.progress .row span{color:var(--muted);font-weight:600}
+.bar{height:8px;border-radius:8px;background:rgba(255,255,255,.08);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--ok));border-radius:8px;transition:width .35s ease}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:border-color .2s}
+.step.done{border-color:rgba(34,211,107,.45)}
+.top{display:flex;gap:14px;align-items:flex-start}
+.check{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.25);background:transparent;display:grid;place-items:center;cursor:pointer;color:transparent;font:800 18px var(--body);padding:0}
+.check:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.step.done .check{background:var(--ok);border-color:var(--ok);color:var(--ok-ink)}
+.tag{font:700 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.step h2{margin:2px 0 4px;font:800 clamp(19px,4.6vw,22px)/1.25 var(--body)}
+.step p{margin:0;color:var(--muted);font-size:15.5px}
+.step p b{color:var(--text)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;padding-left:48px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 18px;border-radius:12px;font:800 16px var(--body);text-decoration:none;border:0;cursor:pointer;text-align:center}
+.btn.main{background:var(--ok);color:var(--ok-ink);flex:1 1 240px}
+.btn.gold{background:var(--gold);color:#111;flex:1 1 240px}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.22)}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.mark{margin-top:12px;padding-left:48px}
+.mark button{background:none;border:0;color:var(--muted);font:600 14px var(--body);text-decoration:underline;cursor:pointer;padding:6px 0}
+.step.done .mark button{color:var(--ok)}
+.agenda{display:grid;gap:10px;margin-top:14px;padding-left:48px}
+.ev{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px}
+.cal{border-radius:10px;overflow:hidden;text-align:center;background:#fff;color:#111}
+.cal b{display:block;background:var(--hot);color:#fff;font:800 11px var(--body);letter-spacing:.12em;padding:3px 0}
+.cal span{display:block;font:800 26px/1.15 var(--body)}
+.ev h3{margin:0;font:800 16px var(--body)}
+.ev p{margin:2px 0 6px;font-size:14px}
+.ev a{display:inline-block;font:700 13.5px var(--body);color:var(--gold);text-decoration:none;margin:4px 14px 0 0;white-space:nowrap}
+details.robo{margin-top:14px;margin-left:48px;background:var(--card2);border:1px solid var(--line);border-radius:14px}
+details.robo summary{cursor:pointer;list-style:none;padding:14px 16px;font:800 15.5px var(--body);display:flex;justify-content:space-between;align-items:center;gap:10px}
+details.robo summary::-webkit-details-marker{display:none}
+details.robo summary::after{content:"+";font-size:22px;color:var(--gold)}
+details.robo[open] summary::after{content:"–"}
+.robo .in{padding:0 16px 16px;display:grid;gap:12px;font-size:15px;color:var(--muted)}
+.good{border-left:3px solid var(--ok);padding-left:12px}
+.bad{border-left:3px solid var(--hot);padding-left:12px}
+.good b{color:#6ee7a0}.bad b{color:#ff8a82}
+.robo img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+.robo .disc{font-size:13px}
+.foot{text-align:center;color:var(--muted);font-size:14px;margin-top:6px}
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:10;display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#062b14;font:800 15px var(--body);text-decoration:none;padding:12px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.wa svg{width:20px;height:20px}
+.done-all{display:none;text-align:center;background:rgba(34,211,107,.12);border:1px solid rgba(34,211,107,.45);border-radius:16px;padding:16px;font-weight:700}
+.done-all.show{display:block}
+@media (max-width:520px){.actions,.mark,.agenda{padding-left:0}details.robo{margin-left:0}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
 <main>
-  <div class="brand"><b>Black Cohen</b><div class="line"><i></i><small>Bem-vindo</small><i></i></div></div>
-  <h1>Compra confirmada. <span>Agora são 5 passos.</span></h1>
-  <p class="lead">Faz na ordem. Leva 10 minutos e deixa tudo pronto pra você começar.</p>
 
-  <section class="step">
-    <div class="n">1</div>
-    <h2>Confere o teu e-mail</h2>
-    <p>O acesso a todos os cursos chega por e-mail, com login e senha da área de alunos. Não chegou em 30 minutos? Olha a caixa de spam e promoções.</p>
-  </section>
-
-  <section class="step">
-    <div class="n">2</div>
-    <h2>Conta numa corretora com MT5 (e 1 mês a mais de robô)</h2>
-    <p>O TNT e o robô rodam no MetaTrader 5, então você precisa de conta numa corretora que tenha MT5. Se abrir a tua conta na XP Investimentos pela Itera Investimentos, você ganha <b>1 mês de bônus no robô</b>.</p>
-    <div class="act"><a class="btn alt" id="itera" href="https://iterainvestimentos.com.br/cohen" target="_blank" rel="noopener">Abrir minha conta pela Itera</a></div>
-  </section>
-
-  <section class="step">
-    <div class="n">3</div>
-    <h2>Robô: ativação ao vivo na segunda-feira, 23/11, às 20h</h2>
-    <p>Na <b>segunda-feira, 23/11, às 20h</b>, eu e a Elaine explicamos e ativamos o robô ao vivo com você. São <b>90 dias de uso, com até 6 contratos</b>. O link da live sai na comunidade de avisos.</p>
-    <div class="risk">
-      <b style="color:#5ee08f">O que ele já fez:</b> em outubro/2026, na minha conta pessoal, foram 279 operações com 93,5% de acerto. No backtest de 50 meses com 2 contratos, a média foi de R$ 492 por mês, com 40 meses positivos.<br><br>
-      <b>E o pior cenário:</b> nesse mesmo backtest, a maior queda foi de R$ 2.036 e o pior mês terminou em −R$ 1.162. O robô vai ter semana ruim. Se você não aguenta ver R$ 2 mil de queda, não liga ele.<br><br>
-      Resultado passado não garante resultado futuro.
+  <section class="hello">
+    <img src="img/rodrigo-avatar.jpg" alt="Rodrigo Cohen" width="72" height="72">
+    <div>
+      <small>Compra confirmada</small>
+      <h1>Bem-vindo à Black Cohen.</h1>
+      <p>Você decidiu. Agora é processo. Faz estes 4 passos hoje: leva 10 minutos e você chega na primeira live pronto.</p>
     </div>
-    <a href="/robo-historico" target="_blank" rel="noopener" style="display:block;margin-top:14px"><img src="img/robo-backtest.jpg" alt="Relatório do backtest do CohenScalper: resultado, curva de capital e quedas" style="width:100%;border-radius:12px;border:1px solid var(--line)"></a>
-    <div class="act"><a class="btn alt" href="/robo-historico" target="_blank" rel="noopener">Ver o histórico completo do robô</a></div>
   </section>
 
-  <section class="step">
-    <div class="n">4</div>
-    <h2>Entra na comunidade de avisos</h2>
-    <p>É por lá que chegam o link da live do robô, a agenda da Sala ao Vivo e do Programa de Aceleração. A Sala ao Vivo começa na semana seguinte à tua compra, numa sala fechada.</p>
-    <div class="act"><a class="btn" id="grupo" href="https://sndflw.com/i/IgOASWfrgyiWmF4tQrXB" rel="noopener">Entrar na comunidade de avisos</a></div>
+  <div class="progress" aria-live="polite">
+    <div class="row">Teu começo <span id="pcount">0 de 4 feitos</span></div>
+    <div class="bar"><i id="pbar"></i></div>
+  </div>
+
+  <section class="step" data-step="1">
+    <div class="top">
+      <button class="check" type="button" aria-label="Marcar passo 1 como feito">✓</button>
+      <div>
+        <div class="tag">Passo 1 · 1 minuto</div>
+        <h2>Entra na comunidade de avisos</h2>
+        <p>É por lá que eu mando <b>o link de cada live</b>, a agenda da Sala e os avisos importantes. Só a equipe posta, então nada se perde.</p>
+      </div>
+    </div>
+    <div class="actions"><a class="btn main" href="https://sndflw.com/i/IgOASWfrgyiWmF4tQrXB" target="_blank" rel="noopener" data-done="1">Entrar na comunidade</a></div>
   </section>
 
-  <section class="step">
-    <div class="n">5</div>
-    <h2>Marca na agenda: Programa de Aceleração</h2>
-    <p>Começa no <b>domingo, 29/11</b>, e dura uma semana, com <b>aulas às 19h</b>. Tudo fica gravado, e mentorados meus estarão presentes para ajudar quem precisar. É pra você começar dezembro operando com o meu método, com regra e rotina desde o primeiro dia.</p>
+  <section class="step" data-step="2">
+    <div class="top">
+      <button class="check" type="button" aria-label="Marcar passo 2 como feito">✓</button>
+      <div>
+        <div class="tag">Passo 2 · 2 minutos</div>
+        <h2>Acessa os teus cursos</h2>
+        <p>O login e a senha da área de alunos chegam <b>no teu e-mail</b> em poucos minutos. Não achou? Olha o spam e a aba promoções.</p>
+      </div>
+    </div>
+    <div class="mark"><button type="button" data-toggle="2">Já entrei na área de alunos</button></div>
   </section>
 
-  <p class="info">Dúvida em qualquer passo? <a href="https://wa.me/5521996730588" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700">Fala com a gente no WhatsApp</a>.</p>
+  <section class="step" data-step="3">
+    <div class="top">
+      <button class="check" type="button" aria-label="Marcar passo 3 como feito">✓</button>
+      <div>
+        <div class="tag">Passo 3 · 5 minutos</div>
+        <h2>Deixa a conta pronta pro robô e pro TNT</h2>
+        <p>Os dois rodam no <b>MetaTrader 5</b>, então você precisa de conta numa corretora com MT5. Abrindo a tua conta na XP Investimentos pela Itera Investimentos, você ganha <b>1 mês a mais de robô</b>.</p>
+      </div>
+    </div>
+    <div class="actions"><a class="btn gold" href="https://iterainvestimentos.com.br/cohen" target="_blank" rel="noopener" data-done="3">Abrir conta e ganhar +1 mês</a></div>
+    <div class="mark"><button type="button" data-toggle="3">Já tenho conta com MT5</button></div>
+  </section>
+
+  <section class="step" data-step="4">
+    <div class="top">
+      <button class="check" type="button" aria-label="Marcar passo 4 como feito">✓</button>
+      <div>
+        <div class="tag">Passo 4 · 1 minuto</div>
+        <h2>Coloca as datas na tua agenda</h2>
+        <p>Toca em "Google Agenda" ou "iPhone" em cada uma. Assim você não perde nenhuma.</p>
+      </div>
+    </div>
+    <div class="agenda">
+      <div class="ev">
+        <div class="cal"><b>NOV</b><span>23</span></div>
+        <div>
+          <h3>Ativação do robô · 20h</h3>
+          <p>Segunda-feira. Eu e a Elaine explicamos e ativamos o robô ao vivo com você. 90 dias de uso, até 6 contratos.</p>
+          <a href="#" data-cal="robo" data-kind="g">+ Google Agenda</a><a href="#" data-cal="robo" data-kind="ics">+ iPhone / Outlook</a>
+        </div>
+      </div>
+      <div class="ev">
+        <div class="cal"><b>NOV</b><span>29</span></div>
+        <div>
+          <h3>Programa de Aceleração · 19h</h3>
+          <p>Começa no domingo e vai a semana toda. Aulas às 19h, tudo gravado, com mentorados meus ajudando quem precisar.</p>
+          <a href="#" data-cal="acel" data-kind="g">+ Google Agenda</a><a href="#" data-cal="acel" data-kind="ics">+ iPhone / Outlook</a>
+        </div>
+      </div>
+      <div class="ev">
+        <div class="cal"><b>SEM</b><span>+1</span></div>
+        <div>
+          <h3>Sala ao Vivo</h3>
+          <p>Começa na semana seguinte à tua compra, numa sala fechada. O link e os horários chegam na comunidade de avisos.</p>
+        </div>
+      </div>
+    </div>
+
+    <details class="robo">
+      <summary>Conhece o robô antes da live</summary>
+      <div class="in">
+        <div class="good"><b>O que ele já fez.</b> Em outubro/2026, na minha conta pessoal: 279 operações e 93,5% de acerto. No backtest de 50 meses com 2 contratos: média de R$ 492 por mês, 40 meses positivos.</div>
+        <div class="bad"><b>O pior cenário.</b> Nesse backtest, a maior queda foi de R$ 2.036 e o pior mês fechou em −R$ 1.162. O robô vai ter semana ruim. Se você não aguenta ver R$ 2 mil de queda, não liga ele.</div>
+        <a href="/robo-historico" target="_blank" rel="noopener"><img src="img/robo-backtest.jpg" alt="Relatório do backtest do CohenScalper: resultado, curva de capital e quedas" loading="lazy"></a>
+        <a class="btn ghost" href="/robo-historico" target="_blank" rel="noopener">Ver o histórico completo, mês a mês</a>
+        <div class="disc">Backtest é simulação com dados históricos. Resultado passado não garante resultado futuro. Day trade envolve risco de perda.</div>
+      </div>
+    </details>
+  </section>
+
+  <div class="done-all" id="doneall">Tudo pronto. Agora é segunda, 23/11, às 20h. Te vejo lá.</div>
+
+  <p class="foot">Travou em algum passo? Me chama no WhatsApp aqui embaixo.</p>
 </main>
+
+<a class="wa" href="https://wa.me/5521996730588" target="_blank" rel="noopener" aria-label="Falar com o suporte no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+  Suporte
+</a>
+
+<script>
+(function(){
+  var KEY="bfc_bv_passos", done={};
+  try{done=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(done))}catch(e){}}
+  function render(){
+    var n=0;
+    document.querySelectorAll(".step").forEach(function(s){
+      var k=s.getAttribute("data-step"),on=!!done[k]; if(on)n++;
+      s.classList.toggle("done",on);
+      s.querySelector(".check").setAttribute("aria-pressed",on?"true":"false");
+    });
+    document.getElementById("pcount").textContent=n+" de 4 feitos";
+    document.getElementById("pbar").style.width=(n*25)+"%";
+    document.getElementById("doneall").classList.toggle("show",n===4);
+  }
+  function set(k,v){done[k]=v;save();render()}
+  document.querySelectorAll(".step .check").forEach(function(b){
+    b.addEventListener("click",function(){var k=b.closest(".step").getAttribute("data-step");set(k,!done[k])});
+  });
+  document.querySelectorAll("[data-toggle]").forEach(function(b){
+    b.addEventListener("click",function(){set(b.getAttribute("data-toggle"),true)});
+  });
+  document.querySelectorAll("[data-done]").forEach(function(a){
+    a.addEventListener("click",function(){set(a.getAttribute("data-done"),true)});
+  });
+  // datas no horário de Brasília (UTC-3)
+  var EV={
+    robo:{t:"Ativação do robô · Black Cohen",s:"20261123T230000Z",e:"20261124T003000Z",d:"Live com o Rodrigo e a Elaine. O link sai na comunidade de avisos dos alunos."},
+    acel:{t:"Programa de Aceleração · Black Cohen",s:"20261129T220000Z",e:"20261129T233000Z",d:"Aulas às 19h a semana toda, tudo gravado. O link sai na comunidade de avisos dos alunos."}
+  };
+  document.querySelectorAll("[data-cal]").forEach(function(a){
+    a.addEventListener("click",function(ev){
+      ev.preventDefault();
+      var x=EV[a.getAttribute("data-cal")];
+      if(a.getAttribute("data-kind")==="g"){
+        window.open("https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(x.t)+"&dates="+x.s+"/"+x.e+"&details="+encodeURIComponent(x.d),"_blank","noopener");
+      }else{
+        var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Black Cohen//PT","BEGIN:VEVENT","UID:"+x.s+"@blackcohen","DTSTAMP:20261115T000000Z","DTSTART:"+x.s,"DTEND:"+x.e,"SUMMARY:"+x.t,"DESCRIPTION:"+x.d,"BEGIN:VALARM","TRIGGER:-PT30M","ACTION:DISPLAY","DESCRIPTION:"+x.t,"END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+        var u=URL.createObjectURL(new Blob([ics],{type:"text/calendar"}));
+        var l=document.createElement("a"); l.href=u; l.download=a.getAttribute("data-cal")+".ics"; document.body.appendChild(l); l.click(); l.remove();
+        setTimeout(function(){URL.revokeObjectURL(u)},4000);
+      }
+      if(!done["4"]) set("4",true);
+    });
+  });
+  render();
+})();
+</script>
 </body>
 </html>
