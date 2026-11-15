@@ -848,6 +848,9 @@ body{margin:0}
 @media (max-width:380px){.pcard .parc .p{font-size:50px}.pcard .x12{font-size:28px}}
 .pcard .parc .p .cur{font-size:.36em;vertical-align:.95em;margin-right:4px;letter-spacing:.02em}
 </style>
+<!-- Meta Pixel: PageView e InitiateCheckout no botão de compra -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2870327729868266');fbq('track','PageView');
+document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('[data-checkout]');if(a&&window.fbq){fbq('track','InitiateCheckout',{value:1497,currency:'BRL',content_name:'Black Friday Cohen 2026'})}},true);</script>
 </head>
 <body>
 <header class="hero">
@@ -1033,7 +1036,7 @@ body{margin:0}
         <span class="de">de <s>R$ 10.385</s> por</span>
         <span class="parc"><span class="x12">12x</span><span class="p"><span class="cur">R$</span>124,75</span></span>
         <span class="v">ou <b>R$ 1.497 à vista</b></span>
-        <a class="cta" href="#" data-track="oferta_cta" data-checkout>Quero entrar na Black</a>
+        <a class="cta" href="https://chk.eduzz.com/Q9N2GYGK01" data-track="oferta_cta" data-checkout>Quero entrar na Black</a>
         <p class="payok">Compra segura · Garantia de 7 dias</p>
       </div>
       <div class="first24"><span class="flag">Só nas primeiras 24h</span><p>Entrou no primeiro dia? Você ganha <b>mais 1 mês de Sala ao Vivo</b> e pode levar <b>mais 2 meses de robô por R$ 500</b> (normal: R$ 2.000).</p></div>
@@ -1132,7 +1135,7 @@ body{margin:0}
     <div class="side">
       <h2 class="big" style="text-align:left;margin:0">Ainda ficou com alguma dúvida?</h2>
       <p class="itp">Fala com a equipe da Trader Nation no WhatsApp.</p>
-      <a class="cta inline" href="#" data-track="suporte_cta">Falar com o suporte</a>
+      <a class="cta inline" href="https://wa.me/5521996730588" target="_blank" rel="noopener" data-track="suporte_cta">Falar com o suporte</a>
     </div>
     <div class="faq">
       <details open><summary>Já comprei curso e robô e não funcionou.</summary><p>Eu mostro meu operacional todo dia, inclusive o dia ruim. Na live do dia 19 eu abro o histórico do robô inteiro, não só o mês bom.</p></details>
