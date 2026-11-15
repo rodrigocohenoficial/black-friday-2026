@@ -5,7 +5,7 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const cookie = request.headers.get('cookie') || '';
   const okCookie = cookie.split(';').some((c) => c.trim() === 'bfc_bv=' + KEY);
-  if (url.searchParams.get('k') === KEY) {
+  if (url.searchParams.get('k') === KEY || url.search.indexOf(KEY) !== -1) {
     return new Response(null, { headers: { 'x-middleware-next': '1', 'set-cookie': 'bfc_bv=' + KEY + '; Path=/; Max-Age=7776000; Secure; HttpOnly; SameSite=Lax', 'x-robots-tag': 'noindex' } });
   }
   if (okCookie) return new Response(null, { headers: { 'x-middleware-next': '1', 'x-robots-tag': 'noindex' } });
