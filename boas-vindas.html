@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Bem-vindo · Black Friday Cohen</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07070a">
+<link rel="icon" href="/favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;600;700;800&display=swap">
+<style>
+:root{--bg:#07070a;--card:#111117;--line:rgba(255,255,255,.1);--text:#f4f3f7;--muted:#c9c6d4;--gold:#f7c948;--hot:#ff3b30;--cta:#22d36b;--cta-ink:#04170b;
+  --impact:"Anton","Arial Narrow",Impact,sans-serif;--body:"Inter Tight",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;line-height:1.5}
+.bg{position:fixed;inset:-30px;background:url(img/hero-clean.jpg) 70% center/cover no-repeat;filter:blur(18px) brightness(.28);z-index:-1}
+main{max-width:760px;margin:0 auto;padding:44px 16px 64px;display:flex;flex-direction:column;gap:22px}
+.brand{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.brand b{font:400 clamp(40px,8vw,64px)/1 var(--impact);letter-spacing:.02em}
+.brand .line{display:flex;align-items:center;gap:12px;width:100%;max-width:420px}
+.brand .line i{flex:1;height:2px;background:var(--hot)}
+.brand small{font:600 13px var(--body);letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+h1{margin:6px 0 0;text-align:center;font:800 clamp(30px,5.6vw,52px)/1.08 var(--body);text-wrap:balance}
+h1 span{color:var(--gold)}
+.lead{margin:0 auto;text-align:center;color:var(--muted);font-size:clamp(16px,2.2vw,19px);max-width:46ch}
+.step{background:rgba(17,17,23,.92);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;display:grid;grid-template-columns:44px 1fr;gap:4px 16px}
+.n{grid-row:span 3;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#111;font:800 22px var(--body);display:grid;place-items:center}
+.step h2{margin:0;font:800 clamp(19px,2.6vw,23px)/1.25 var(--body)}
+.step p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.step .act{margin-top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--cta);color:var(--cta-ink);font:800 17px var(--body);text-decoration:none;border-radius:8px;padding:14px 22px;max-width:100%}
+.btn.alt{background:var(--gold);color:#111}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.risk{margin-top:12px;border:1px solid rgba(255,59,48,.5);background:rgba(255,59,48,.08);border-radius:12px;padding:14px 16px;font-size:15px;color:var(--text)}
+.risk b{color:#ff8a82}
+.risk label{display:flex;gap:10px;align-items:flex-start;margin-top:10px;font-weight:700;cursor:pointer}
+.risk input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--cta)}
+.hide{display:none}
+.info{font-size:14px;color:var(--muted);text-align:center;margin:6px 0 0}
+@media (max-width:480px){.step{grid-template-columns:1fr}.n{grid-row:auto}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main>
+  <div class="brand"><b>Black Cohen</b><div class="line"><i></i><small>Bem-vindo</small><i></i></div></div>
+  <h1>Compra confirmada. <span>Agora são 4 passos.</span></h1>
+  <p class="lead">Faz na ordem. Leva 10 minutos e deixa tudo pronto pra você começar.</p>
+
+  <section class="step">
+    <div class="n">1</div>
+    <h2>Confere o teu e-mail</h2>
+    <p>O acesso a todos os cursos chega por e-mail, com login e senha da área de alunos. Não chegou em 30 minutos? Olha a caixa de spam e promoções.</p>
+  </section>
+
+  <section class="step">
+    <div class="n">2</div>
+    <h2>Abre a tua conta na XP Investimentos pela Itera</h2>
+    <p>O TNT e o robô só funcionam em conta da XP Investimentos aberta pela Itera Investimentos. Sem esse passo, eles não são liberados.</p>
+    <div class="act"><a class="btn alt" id="itera" href="https://rodrigocohen.com.br/itera" target="_blank" rel="noopener">Abrir minha conta pela Itera</a></div>
+    <p>Já tem conta na XP Investimentos? Avisa na comunidade dos alunos que a gente te orienta.</p>
+  </section>
+
+  <section class="step">
+    <div class="n">3</div>
+    <h2>Robô: ativação ao vivo na segunda-feira</h2>
+    <p>Toda segunda-feira à noite, eu e a Elaine ativamos o robô ao vivo com os alunos novos. O link da live sai na comunidade dos alunos.</p>
+    <div class="risk">
+      Antes de ligar, conheça o pior cenário. No backtest com 2 contratos, <b>a maior queda foi de R$ 2.036</b> e <b>o pior mês terminou em −R$ 1.162</b>. O robô vai ter semana ruim. Se você não aguenta ver R$ 2 mil de queda, não liga ele. Resultado passado não garante resultado futuro.
+      <label><input type="checkbox" id="li"> Li e entendi o pior cenário.</label>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="n">4</div>
+    <h2>Entra na comunidade dos alunos</h2>
+    <p>É por lá que chegam o link da live do robô, a agenda da Sala ao Vivo e os encontros. A Sala ao Vivo começa na semana seguinte à tua compra, numa sala fechada.</p>
+    <div class="act"><a class="btn" id="grupo" href="#" rel="noopener">Entrar na comunidade dos alunos</a></div>
+  </section>
+
+  <p class="info">Dúvida em qualquer passo? Manda na comunidade dos alunos.</p>
+</main>
+</body>
+</html>
