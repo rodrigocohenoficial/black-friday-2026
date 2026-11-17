@@ -1228,5 +1228,31 @@ var CFG={
     document.getElementById("vplay").addEventListener("click",function(){mv.scrollIntoView({behavior:"smooth",block:"center"});try{mv.play()}catch(e){}});}
 })();
 </script>
+<script>
+/* rastreio da página de vendas: leva as UTMs até o checkout da Eduzz e registra visita e clique no checkout na planilha (sem dados pessoais) */
+(function(){
+  var WEBHOOK="https://script.google.com/macros/s/AKfycbxz8_7dvLdA7MbgeuaI7aEkps0VMuPOKyAtoxtYvmA3d6KLCPF38jfSUhY4L8gqeNRx/exec";
+  var K=["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+  var q=new URLSearchParams(location.search),u={},salvo={};
+  try{salvo=JSON.parse(localStorage.getItem("bfc_utm_vendas")||"{}")}catch(e){}
+  if(K.some(function(k){return q.get(k)})){K.forEach(function(k){if(q.get(k))u[k]=q.get(k)});try{localStorage.setItem("bfc_utm_vendas",JSON.stringify(u))}catch(e){}}
+  else u=salvo;
+  var fb=q.get("fbclid")?1:0,sess="";
+  try{sess=sessionStorage.getItem("bfc_sess")||"";if(!sess){sess=Date.now().toString(36)+Math.random().toString(36).slice(2,8);sessionStorage.setItem("bfc_sess",sess)}}catch(e){}
+  function envia(ev,extra){
+    var d={tipo:"vendas",evento:ev,sessao:sess,fbclid:fb,dispositivo:/Mobi|Android|iPhone/i.test(navigator.userAgent)?"mobile":"desktop",referrer:document.referrer.slice(0,200),pagina:location.pathname};
+    K.forEach(function(k){if(u[k])d[k]=u[k]});for(var x in extra)d[x]=extra[x];
+    var body=JSON.stringify(d);
+    try{if(navigator.sendBeacon&&navigator.sendBeacon(WEBHOOK,new Blob([body],{type:"text/plain;charset=utf-8"})))return}catch(e){}
+    try{fetch(WEBHOOK,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:body,keepalive:true,mode:"no-cors"})}catch(e){}
+  }
+  /* UTMs no link do checkout: a Eduzz grava na venda e o painel mostra de onde ela veio */
+  function comUtm(url){try{var x=new URL(url);K.forEach(function(k){if(u[k])x.searchParams.set(k,u[k])});return x.toString()}catch(e){return url}}
+  if(window.CFG&&CFG.CHECKOUT_URL)CFG.CHECKOUT_URL=comUtm(CFG.CHECKOUT_URL);
+  document.querySelectorAll("a[data-checkout]").forEach(function(a){a.href=comUtm(a.href);a.addEventListener("click",function(){envia("checkout",{cta:a.getAttribute("data-track")||""})})});
+  var ja="";try{ja=sessionStorage.getItem("bfc_visita")}catch(e){}
+  if(!ja){envia("visita");try{sessionStorage.setItem("bfc_visita","1")}catch(e){}}
+})();
+</script>
 </body>
 </html>
