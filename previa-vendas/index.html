@@ -192,12 +192,6 @@ h2.big{font:700 clamp(32px,4.4vw,54px)/1.06 var(--body);letter-spacing:-.01em;te
 .deps figure{margin:0}
 .deps img{display:block;width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 20px 60px -24px rgba(34,211,107,.45)}
 @media (max-width:640px){.deps{grid-template-columns:1fr}}
-.depwall{columns:3 300px;column-gap:16px;width:100%;max-width:1120px;align-self:stretch;margin:22px auto 0;text-align:left}
-.depwall figure{margin:0 0 16px;break-inside:avoid;background:#0d0d12;border:1px solid var(--line);border-radius:16px;padding:8px}
-.depwall img{display:block;width:100%;height:auto;border-radius:10px}
-.depmais{display:none;margin:6px auto 0;background:transparent;color:#fff;border:1px solid var(--line);border-radius:999px;padding:12px 26px;font:inherit;font-weight:700;cursor:pointer}
-@media (max-width:700px){.depwall:not(.aberto) .mais{display:none}.depmais{display:block}}
-.deptit{margin:26px 0 0;font-weight:700;color:var(--muted,#c9c6d4)}
 .depsec{align-items:center;text-align:center}
 .depsec h2.big{margin-inline:auto}
 .err{font-size:14px;color:#ff8a75;font-weight:600}
@@ -868,18 +862,14 @@ em.hit{background:#c8231a}
   .rnum{left:16px}.rnum b{font-size:60px}.rnum span{font-size:10px;letter-spacing:.08em}
   .hero .cta{font-size:17px;padding:18px 16px}
 }
-/* legibilidade e toque (revisão 16/11) */
-.bonus .bn,.ttx .tw,.scarce .sn span{font-size:12px}
-.tth.gold small{font-size:10.5px;letter-spacing:.08em}
-.live.sm{font-size:9.5px;padding:3px 6px}
-.bar .cta{min-height:40px;display:inline-flex;align-items:center}
-@media (max-width:600px){.plus{font-size:12px}.tw{font-size:11.5px;letter-spacing:.04em}}
-@media (max-width:380px){.rnum span{font-size:11.5px;letter-spacing:.05em}}
-.depwall img{cursor:zoom-in}
-.zoomv{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto;cursor:zoom-out}
-.zoomv img{max-width:100%;max-height:100%;width:auto;height:auto;border-radius:10px}
-@media (max-width:700px){.zoomv{display:block;padding:56px 0 24px}.zoomv img{max-width:none;max-height:none;width:720px;border-radius:0}.zoomv::before{content:"Arrasta pra ler · toca pra fechar";position:fixed;top:14px;left:0;right:0;text-align:center;color:#fff;font:700 13px var(--body)}}
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2870327729868266');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2870327729868266&ev=PageView&noscript=1" alt=""></noscript>
+<!-- End Meta Pixel -->
 </head>
 <body>
 <header class="hero">
@@ -888,7 +878,7 @@ em.hit{background:#c8231a}
     <div class="left">
       <span class="once"><i></i>Oferta inédita, que nunca mais vai se repetir</span>
       <h1>Setup você já tem.<br>O que falta é <span class="hl-gold">regra, rotina e alguém do seu lado</span>.</h1>
-      <p class="sub">Na Black Cohen você leva tudo o que eu tenho pra te tirar do ganha e devolve: <b class="hl-gold">todos os meus cursos com acesso vitalício</b>, 3 meses de Sala ao Vivo comigo, <b style="color:var(--cta)">o robô que opera na minha conta pessoal</b>, o TNT, o Programa de Aceleração e 6 meses de Mesa da Consistência. <span class="hl-gold">Pelo preço de um curso só.</span></p>
+      <p class="sub">Na Black Cohen você leva tudo o que eu tenho pra te tirar do ganha e devolve: <b class="hl-gold">todos os meus cursos com acesso vitalício</b>, 3 meses de Sala ao Vivo comigo, <b style="color:var(--cta)">o robô que opera na minha conta pessoal</b>, o TNT, o Acelerador e 6 meses de Mesa da Consistência. <span class="hl-gold">Pelo preço de um curso só.</span></p>
       <div class="ctas">
         <a class="cta" href="https://chk.eduzz.com/Q9N2GYGK01" target="_blank" rel="noopener" data-track="hero_cta" data-checkout>Garantir a minha vaga agora</a>
         <p class="payok">Pagamento seguro. Cartão em até 12x ou Pix. Acesso liberado após a confirmação.</p>
@@ -950,12 +940,12 @@ em.hit{background:#c8231a}
       <div class="rtxt"><span class="pil">03</span><h3>Robô CohenScalper: <span class="hl-gold">a regra rodando sem emoção</span></h3>
         <p>É o robô que opera na minha conta pessoal, no mini índice. Enquanto você trabalha, ele entra e sai seguindo a regra e para depois de 2 stops.</p>
         <p class="kick2">Sem medo, sem ganância, sem “só mais uma”. Tudo o que te faz devolver, ele não tem.</p>
-        <span class="dur">90 dias · até 10 contratos</span></div>
+        <span class="dur">2 meses · até 5 contratos</span></div>
     </div>
     <div class="row2x rev">
       <div class="rvis num"><div class="bignum">5<small>NOITES AO VIVO · DEZEMBRO</small></div></div>
-      <div class="rtxt"><span class="pil">04</span><h3>Programa de Aceleração: <span class="hl-gold">comece 2027 com o plano pronto</span></h3>
-        <p>Uma semana ao vivo comigo a partir de 29/11, com aulas às 19h e tudo gravado: diagnóstico do seu ganha e devolve, gestão de risco e setup, pra você começar dezembro operando com o método.</p>
+      <div class="rtxt"><span class="pil">04</span><h3>Acelerador: <span class="hl-gold">comece 2027 com o plano pronto</span></h3>
+        <p>5 noites ao vivo comigo em dezembro: diagnóstico do seu ganha e devolve, gestão de risco, setup e o robô instalado na sua conta.</p>
         <p class="kick2">No quinto dia você sai com o seu plano de trade pra 2027 pronto. Escrito. Na sua mão.</p>
         <span class="dur">Dezembro · fica gravado</span></div>
     </div>
@@ -1029,7 +1019,7 @@ em.hit{background:#c8231a}
 <section class="in center">
   <h2 class="big">E de bônus, você ainda leva:</h2>
   <div class="bonus">
-    <div><span class="bn">Bônus 1</span><b>A Mesa da Consistência</b><span>Um encontro por mês comigo, durante 6 meses, a partir de dezembro. A gente olha o teu operacional, ajusta a regra e você não larga no meio do caminho.</span></div>
+    <div><span class="bn">Bônus 1</span><b>O seu gráfico igual ao meu</b><span>Meu Workspace do Profit, com os mesmos indicadores que eu uso todo dia. Você abre a tela e enxerga o mercado do jeito que eu enxergo.</span></div>
     <div><span class="bn">Bônus 2</span><b>O seu plano de 2027</b><span>Uma aula pra você montar o plano do ano: quanto arriscar, quando parar e qual a sua meta. Você entra em janeiro sabendo o que fazer.</span></div>
     <div><span class="bn">Bônus 3</span><b>Desafio Consistência</b><span>20 pregões no simulador seguindo a regra. Você prova pra você mesmo que está pronto, antes de arriscar dinheiro.</span></div>
     <div><span class="bn">Bônus 4</span><b>Comunidade</b><span>Traders seguindo a mesma regra que você. Ninguém mais opera sozinho.</span></div>
@@ -1041,15 +1031,15 @@ em.hit{background:#c8231a}
   <h2 class="big">Se você fosse montar tudo isso por conta própria, <span class="hl-gold">o investimento seria</span>:</h2>
   <div class="anchorbox">
     <div class="row"><span>TNT (Trader Nation Terminal), 12 meses</span><span>R$ 2.400</span></div>
-    <div class="row"><span>Robô CohenScalper, 90 dias</span><span>R$ 3.000</span></div>
+    <div class="row"><span>Robô CohenScalper, 2 meses</span><span>R$ 2.000</span></div>
     <div class="row"><span>Sala ao Vivo, 3 meses</span><span>R$ 1.997</span></div>
-    <div class="row"><span>Programa de Aceleração ao vivo</span><span>R$ 1.000</span></div>
+    <div class="row"><span>Acelerador ao vivo</span><span>R$ 1.000</span></div>
     <div class="row"><span>Formação Trader + Sociedade Cohen</span><span>R$ 997</span></div>
     <div class="row"><span>Mentoria Trader 360 gravada</span><span>R$ 997</span></div>
     <div class="row"><span>MCT</span><span>R$ 697</span></div>
     <div class="row"><span>Pacote de Setups</span><span>R$ 297</span></div>
-    <div class="row"><span>Mesa da Consistência e Plano 2027</span><span>bônus</span></div>
-    <div class="sum"><span>Total</span><b>R$ 11.385</b></div>
+    <div class="row"><span>Mesa da Consistência, Workspace e Plano 2027</span><span>bônus</span></div>
+    <div class="sum"><span>Total</span><b>R$ 10.385</b></div>
   </div>
 </section>
 
@@ -1058,16 +1048,17 @@ em.hit{background:#c8231a}
   <div class="offer2">
     <p class="y27">Black Cohen</p>
     <h2 class="big">Mas hoje você leva tudo isso pelo preço de <span class="hl-gold">um curso só</span>.</h2>
-    <p class="prose"><span>Separado, tudo isso sairia por R$ 11.385. Só o robô, por 90 dias, vale R$ 3 mil. Na noite da live, você leva tudo por <b>R$ 1.497</b>.</span></p>
+    <p class="prose"><span>Separado, tudo isso sairia por R$ 10.385. Só o robô, por 2 meses, vale R$ 2 mil. Na noite da live, você leva tudo por <b>R$ 1.497</b>.</span></p>
     <div class="pwrap">
       <div class="pcard">
         <span class="t">Preço da Black Cohen</span>
-        <span class="de">de <s>R$ 11.385</s> por</span>
+        <span class="de">de <s>R$ 10.385</s> por</span>
         <span class="parc"><span class="x12">12x</span><span class="p"><span class="cur">R$</span>149,67</span></span>
         <span class="v">ou <b>R$ 1.497 à vista</b></span>
         <a class="cta" href="https://chk.eduzz.com/Q9N2GYGK01" target="_blank" rel="noopener" data-track="oferta_cta" data-checkout>Quero entrar na Black</a>
         <p class="payok">Compra segura · Garantia de 7 dias</p>
       </div>
+      <div class="first24"><span class="flag">Só nas primeiras 24h</span><p>Entrou no primeiro dia? Você ganha <b>mais 1 mês de Sala ao Vivo</b> e pode levar <b>mais 2 meses de robô por R$ 500</b> (normal: R$ 2.000).</p></div>
     </div>
     <div class="scarce">
       <div class="sn"><b>300</b><span>licenças do robô</span></div>
@@ -1106,9 +1097,9 @@ em.hit{background:#c8231a}
     <div class="tli"><div class="tth sala"><span class="live sm">AO VIVO</span><img loading="lazy" decoding="async" src="/previa-vendas/img/rodrigo-terno.webp" alt=""></div>
       <div class="ttx"><span class="tw">Toda manhã</span><b>Você opera do meu lado</b><span>Na Sala ao Vivo. Bateu a meta, desliga e vai viver.</span></div></div>
     <div class="tli"><div class="tth gold"><b>93,5%</b><small>out/2026</small></div>
-      <div class="ttx"><span class="tw">Enquanto você trabalha</span><b>O robô segue a regra</b><span>No mini índice, por 90 dias, com o risco que eu te mostrei antes de ligar.</span></div></div>
-    <div class="tli"><div class="tth gold"><b>29/11</b><small>1 semana</small></div>
-      <div class="ttx"><span class="tw">A partir de 29/11</span><b>Programa de Aceleração</b><span>Você termina o ano com o seu plano de trade de 2027 escrito.</span></div></div>
+      <div class="ttx"><span class="tw">Enquanto você trabalha</span><b>O robô segue a regra</b><span>No mini índice, por 2 meses, com o risco que eu te mostrei antes de ligar.</span></div></div>
+    <div class="tli"><div class="tth gold"><b>5</b><small>noites</small></div>
+      <div class="ttx"><span class="tw">Dezembro</span><b>Acelerador comigo</b><span>Você termina o ano com o seu plano de trade de 2027 escrito.</span></div></div>
     <div class="tli"><div class="tth gold"><b>20</b><small>pregões</small></div>
       <div class="ttx"><span class="tw">Janeiro e fevereiro</span><b>Você prova a regra</b><span>No simulador, no Desafio Consistência, antes de arriscar dinheiro.</span></div></div>
     <div class="tli"><div class="tth gold"><b>6</b><small>meses</small></div>
@@ -1128,12 +1119,7 @@ em.hit{background:#c8231a}
   </div>
   <div class="quotes3"><div class="quote"><p>“Estava com R$ 190 perto das 11h, tomei um loss de R$ 158, mantive a regra de aceitar só mais um loss, o robô voltou a ganhar e encerrei às 12h com R$ 220.”</p><cite>Willy Y.</cite></div><div class="quote"><p>“Desliguei o meu quando chegou a 198,00.”</p><cite>Adriana L.</cite></div><div class="quote"><p>“Meu primeiro dia deu 305,00.”</p><cite>Gusmão</cite></div></div>
   <div class="deps"><figure><img src="/previa-vendas/img/dep1.webp" width="736" height="1104" loading="lazy" decoding="async" alt="Print do grupo: aluno usando o Scalp do Cohen"></figure><figure><img src="/previa-vendas/img/dep2.webp" width="800" height="972" loading="lazy" decoding="async" alt="Print do grupo: aluno aplicando a estratégia"></figure></div>
-  
-  <p class="deptit">O que os alunos mandam no grupo</p>
-  <div class="depwall" id="depwall"><figure><img src="/previa-vendas/img/dep16.webp" width="720" height="955" loading="lazy" decoding="async" alt="Print de aluno: IA da corretora parabeniza pelo resultado de R$ 364 com o robô"></figure><figure><img src="/previa-vendas/img/dep3.webp" width="850" height="722" loading="lazy" decoding="async" alt="Print de aluno: 4 operações no gain no WIN em 06/11"></figure><figure><img src="/previa-vendas/img/dep12.webp" width="720" height="250" loading="lazy" decoding="async" alt="Print de aluno: o robô começou quase 12h e fez R$ 212"></figure><figure><img src="/previa-vendas/img/dep13.webp" width="720" height="455" loading="lazy" decoding="async" alt="Print de aluno: 4 dias no scalp com 100% de aproveitamento"></figure><figure><img src="/previa-vendas/img/dep15.webp" width="720" height="490" loading="lazy" decoding="async" alt="Print de aluno: segundo dia de robô, fechou no verde"></figure><figure><img src="/previa-vendas/img/dep17.webp" width="720" height="800" loading="lazy" decoding="async" alt="Print de aluno: tela do robô com lucro de R$ 153"></figure><figure class="mais"><img src="/previa-vendas/img/dep11.webp" width="720" height="310" loading="lazy" decoding="async" alt="Print de aluno: relato do dia, encerrou com lucro de R$ 220"></figure><figure class="mais"><img src="/previa-vendas/img/dep7.webp" width="720" height="185" loading="lazy" decoding="async" alt="Print de aluno: meu primeiro dia deu R$ 305"></figure><figure class="mais"><img src="/previa-vendas/img/dep8.webp" width="720" height="170" loading="lazy" decoding="async" alt="Print de aluno: robô hoje R$ 304"></figure><figure class="mais"><img src="/previa-vendas/img/dep9.webp" width="720" height="195" loading="lazy" decoding="async" alt="Print de aluno: desliguei quando chegou a R$ 198"></figure><figure class="mais"><img src="/previa-vendas/img/dep10.webp" width="720" height="357" loading="lazy" decoding="async" alt="Print de aluno: R$ 117 mesmo com loss do payroll"></figure><figure class="mais"><img src="/previa-vendas/img/dep5.webp" width="900" height="611" loading="lazy" decoding="async" alt="Print de aluno: saiu no lucro de R$ 140"></figure><figure class="mais"><img src="/previa-vendas/img/dep4.webp" width="900" height="1271" loading="lazy" decoding="async" alt="Print de aluno: robô com 2 operações no gain, desligado por causa do payroll"></figure><figure class="mais"><img src="/previa-vendas/img/dep6.webp" width="546" height="128" loading="lazy" decoding="async" alt="Print de aluno: saiu com R$ 56 e desligou às 10h"></figure><figure class="mais"><img src="/previa-vendas/img/dep14.webp" width="720" height="245" loading="lazy" decoding="async" alt="Print de aluno: participei da Cohen Code e foi uma experiência extraordinária"></figure></div>
-  <button type="button" class="depmais" onclick="document.getElementById('depwall').classList.add('aberto');this.remove()">Ver mais prints</button>
-  <script>document.getElementById('depwall').addEventListener('click',function(e){var i=e.target.closest('img');if(!i)return;var o=document.createElement('div');o.className='zoomv';o.innerHTML='<img alt="">';o.firstChild.src=i.src;o.firstChild.alt=i.alt;o.onclick=function(){o.remove();document.body.style.overflow=''};document.body.style.overflow='hidden';document.body.appendChild(o)});</script>
-  <p class="fine">Prints enviados por alunos no grupo, com nomes ocultos, de dias específicos. Resultados individuais. Simulado: 2 contratos, após custos da B3, antes do IR. Resultado passado não garante resultado futuro.</p>
+  <p class="fine">Resultados individuais. Simulado: 2 contratos, após custos da B3, antes do IR. Resultado passado não garante resultado futuro.</p>
 </section>
 
 <!-- 7. GARANTIA -->
@@ -1172,14 +1158,14 @@ em.hit{background:#c8231a}
     </div>
     <div class="faq">
       <details open><summary>Já comprei curso e robô e não funcionou.</summary><p>Eu mostro meu operacional todo dia, inclusive o dia ruim. Na live do dia 19 eu abro o histórico do robô inteiro, não só o mês bom.</p></details>
-      <details><summary>Como funciona o robô?</summary><p>Ele opera o mini índice no gráfico de 5 minutos, entre 9h15 e 13h, e para sozinho depois de 2 stops no dia. Roda no MetaTrader 5, no seu computador ou numa VPS (cerca de R$ 85 por mês). Você começa com 2 contratos e pode ir até 10. Na Black, são 90 dias de uso.</p></details>
+      <details><summary>Como funciona o robô?</summary><p>Ele opera o mini índice no gráfico de 5 minutos, entre 9h15 e 13h, e para sozinho depois de 2 stops no dia. Roda no MetaTrader 5, no seu computador ou numa VPS (cerca de R$ 85 por mês). Você começa com 2 contratos e pode ir até 5. Na Black, são 2 meses de uso.</p></details>
       <details><summary>Quanto dinheiro o robô precisa? E qual o risco?</summary><p>Pra cada 2 contratos, você precisa de R$ 2 mil na conta. E eu te mostro o risco antes de você ligar: no simulado de jan/2022 a fev/2026, com 2 contratos, a maior queda foi de R$ 2.036 e o pior mês, −R$ 1.162. Resultado passado não garante resultado futuro.</p></details>
       <details><summary>Tenho pouco dinheiro pra operar.</summary><p>Na mão, dá pra começar com R$ 2 mil, com regra. Primeiro você aprende a proteger o capital.</p></details>
       <details><summary>Não tenho tempo.</summary><p>Eu opero de manhã e desligo. Os cursos são vitalícios, você assiste no seu ritmo, e o robô segue a regra quando você não está na tela.</p></details>
-      <details><summary>Preciso abrir conta em alguma corretora?</summary><p>Só se quiser usar o robô e o TNT, que rodam no MetaTrader 5: você precisa de conta numa corretora com MT5. Se abrir a conta na XP Investimentos pela Itera, a assessoria da qual eu sou sócio, você ganha 1 mês a mais de robô, e a nossa equipe faz isso junto com você. Se não quiser abrir conta, continua com todos os cursos, a Sala, o Programa de Aceleração e a Mesa.</p></details>
-      <details><summary>Sou iniciante. É pra mim?</summary><p>É. Os cursos começam do zero e o Programa de Aceleração é uma semana de aulas ao vivo comigo, aplicando.</p></details>
+      <details><summary>Preciso abrir conta em alguma corretora?</summary><p>Só se quiser usar o robô e o TNT. Aí você abre a conta na XP Investimentos pela Itera, a assessoria da qual eu sou sócio, e a nossa equipe faz isso junto com você em até 24h. Se não quiser abrir conta, continua com todos os cursos, a Sala, o Acelerador e a Mesa.</p></details>
+      <details><summary>Sou iniciante. É pra mim?</summary><p>É. Os cursos começam do zero e o Acelerador são 5 noites comigo aplicando.</p></details>
       <details><summary>Robô vai me deixar rico?</summary><p>Não. Robô é regra rodando sem emoção. Resultado passado não garante resultado futuro.</p></details>
-      <details><summary>É caro.</summary><p>Separado, tudo isso sairia por R$ 11.385. Na Black, é R$ 1.497. Só o robô, por 90 dias, vale R$ 3 mil. E depois da Black ele sai a partir de R$ 12 mil.</p></details>
+      <details><summary>É caro.</summary><p>Separado, tudo isso sairia por R$ 10.385. Na Black, é R$ 1.497. Só o robô, por 2 meses, vale R$ 2 mil. E depois da Black ele sai a partir de R$ 12 mil.</p></details>
       <details><summary>E se eu não gostar?</summary><p>Garantia de 7 dias. Entra, assiste, testa. Se não for pra você, eu devolvo tudo.</p></details>
     </div>
   </div>
@@ -1211,7 +1197,7 @@ var CFG={
   /* botões: com checkout definido, vão direto; sem ele, rolam até o preço */
   document.querySelectorAll("a[data-track]").forEach(function(a){
     a.addEventListener("click",function(e){
-      if(CFG.CHECKOUT_URL&&a.hasAttribute("data-checkout")){a.href=CFG.CHECKOUT_URL;return}
+      if(CFG.CHECKOUT_URL&&a.hasAttribute("data-checkout")){a.href=CFG.CHECKOUT_URL;if(window.fbq)fbq("track","InitiateCheckout",{value:1497,currency:"BRL",content_name:"black-cohen-2026"});return}
       if(a.getAttribute("href").charAt(0)==="#"){e.preventDefault();var alvo=document.querySelector(a.getAttribute("href")!=="#"?a.getAttribute("href"):"#oferta");var bar=document.querySelector(".bar");
         if(alvo)window.scrollTo({top:alvo.getBoundingClientRect().top+window.pageYOffset-(bar?bar.offsetHeight:0)-12,behavior:"smooth"});}
     });
