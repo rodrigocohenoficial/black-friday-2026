@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__SendFlow_Pro",
+      "mcp__Metricool_Social_Media_Management",
+      "mcp__Vercel",
+      "mcp__Google_Drive",
+      "mcp__Google_Sheets",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(curl *)",
+      "Bash(ffmpeg *)",
+      "Bash(ffprobe *)",
+      "Bash(python3 *)",
+      "Bash(node *)"
+    ]
+  }
+}
